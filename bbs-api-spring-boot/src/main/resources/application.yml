@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/bbs
+    username: root
+    password: RoOtPaSs
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# Web
+spring.thymeleaf.prefix: classpath:/web/
+#spring.thymeleaf
+# Allow Thymeleaf web to be reloaded at dev time
+spring.thymeleaf.cache: false
+
+#logging.config: classpath:log4j2.xml
+mybatis.config-location: classpath:mybatisConfig.xml
+mybatis.mapper-locations: classpath*:bbs/api/biz/dal/mapper/xml/original/*.xml, bbs/api/biz/dal/mapper/xml/extend/*.xml

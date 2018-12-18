@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="logPath">C:\logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ABSOLUTE} &lt;%c&gt; %5p [%t]: %m%n"/>
+        </Console>
+        <RollingRandomAccessFile name="SERVICE_LOG_FILE" fileName="${logPath}/service.log" filePattern="${logPath}/$${date:yyyy-MM}/service-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{ABSOLUTE} &lt;%c&gt; %5p [%t]: %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="JOB_LOG_FILE" fileName="${logPath}/boot.log" filePattern="${sys:user.home}/$${date:yyyy-MM}/logs/boot-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{ABSOLUTE} &lt;%c&gt; %5p [%t]: %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy/>
+        </RollingRandomAccessFile>
+        <RollingFile name="RollingFileWarn" fileName="${logPath}/warn.log" filePattern="${logPath}/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="8 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+        <RollingFile name="RollingFileError" fileName="${logPath}/error.log" filePattern="${logPath}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="8 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+        <Logger name="bbs.api.biz.dal.mapper.original" level="TRACE" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="bbs.api.biz.dal.mapper.extend" level="TRACE" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+    </Loggers>
+</Configuration>

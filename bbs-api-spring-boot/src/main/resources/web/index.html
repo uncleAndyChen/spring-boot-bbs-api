@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html th:fragment="layout(template)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Api mock</title>
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script src="/static/js/common.js" th:src="@{/js/common.js}+ '?v=201812182150'"></script>
+    <script type="text/javascript" src="/static/js/index.js" th:src="@{/js/index.js}+ '?v=201812182150'"></script>
+</head>
+<body>
+    <h3 align="center">api列表，点击可获取测试数据</h3>
+    每页记录数 ：<input type="text" id="pageSize" value="5"/>
+    帖子ID（为0表示不限制） ：<input type="text" id="whereFieldValue" value="0"/>
+    &nbsp;&nbsp;
+    <a href="javascript:apiPost('getPostList');">获取帖子列表</a>
+    <br/>
+    <hr/>
+    <textarea rows="30" cols="256" id="txtJsonResult"></textarea>
+</body>
+</html>
