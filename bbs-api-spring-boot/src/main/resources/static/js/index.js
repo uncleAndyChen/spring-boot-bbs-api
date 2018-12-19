@@ -11,6 +11,14 @@ function apiPost(method) {
 
             baseRequest.jsonStringParameter = JSON.stringify(parameter);
             break;
+        case "getCommentList":
+            var parameter = new Object();
+            parameter.recordsLimit = document.getElementById("pageSizeForComment").value;
+            parameter.orderBy = "updatedAt DESC";
+            parameter.whereFieldValue = document.getElementById("postID").value;
+
+            baseRequest.jsonStringParameter = JSON.stringify(parameter);
+            break;
     }
 
     $.ajax({
@@ -20,8 +28,13 @@ function apiPost(method) {
         timeout: 600000,
         success: function (o) {
             $("#txtJsonResult").val(JSON.stringify(o));
+
             if (o.code === 1) {
-                $("#txtJsonResult").val(JSON.stringify(o));
+                // alert("success!")
+                $("#divResult").html("success!");
+            } else {
+                // alert(o.message);
+                $("#divResult").html(o.message);
             }
         },
         error: function (e) {

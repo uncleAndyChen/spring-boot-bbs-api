@@ -23,7 +23,7 @@ public class PostService {
             return null;
         }
 
-        List<PostResponse> postListResponseList = new ArrayList<PostResponse>();
+        List<PostResponse> postListResponseList = new ArrayList<>();
 
         for (Post post : postList) {
             postListResponseList.add(getPostResponseByPost(post));
@@ -39,17 +39,7 @@ public class PostService {
         postResponse.setTitle(post.getTitle());
         postResponse.setVote(post.getVote());
         postResponse.setUpdatedAt(DateHelper.stampToDate(post.getUpdatedAt()));
-
-        // 获取用户信息
-        User user = UserDalService.getUserByPrimaryKey(post.getUserId());
-
-        if (user != null) {
-            AuthorView authorView = new AuthorView();
-            authorView.setId(user.getUserId());
-            authorView.setUsername(user.getUsername());
-
-            postResponse.setAuthor(authorView);
-        }
+        postResponse.setAuthor(UserService.getAuthorView(post.getUserId()));
 
         return postResponse;
     }

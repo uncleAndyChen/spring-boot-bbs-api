@@ -9,6 +9,7 @@ public enum ResponseCodeEnum {
     error(-10, "异常"),
     unknownException(-20, "未知异常"),
     noSuchMethodException(-30, "调用了不存在的方法，请联系管理员。"),
+    noRecord(-40, "暂无记录"),
     ;
 
     private int index;

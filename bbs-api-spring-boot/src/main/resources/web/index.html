@@ -15,6 +15,14 @@
     <a href="javascript:apiPost('getPostList');">获取帖子列表</a>
     <br/>
     <hr/>
+    每页记录数 ：<input type="text" id="pageSizeForComment" value="5"/>
+    帖子ID：<input type="text" id="postID" value="0"/>
+    &nbsp;&nbsp;
+    <a href="javascript:apiPost('getCommentList');">获取评论列表</a>
+    <br/>
+    <hr/>
+    操作结果：<div style="color:red;" id="divResult"></div>
+    <hr/>
     <textarea rows="30" cols="256" id="txtJsonResult"></textarea>
 </body>
 </html>

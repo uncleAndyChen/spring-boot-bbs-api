@@ -50,3 +50,18 @@ create table bbsUser
 );
 
 alter table bbsUser comment 'bbsUser 用户';
+
+-- init datas
+truncate bbsUser;
+INSERT INTO `bbs`.`bbsUser` (`username`, `password`) VALUES ('Tom', '123456');
+INSERT INTO `bbs`.`bbsUser` (`username`, `password`) VALUES ('Jack', '123456');
+INSERT INTO `bbs`.`bbsUser` (`username`, `password`) VALUES ('Steve', '123456');
+
+truncate bbsPost;
+INSERT INTO `bbs`.`bbsPost` (`userId`, `title`, `vote`, `updatedAt`) VALUES ('2', '本项目分享个人学习 react 技术栈（全家桶）的一些经验心得', '1', '1545189942');
+INSERT INTO `bbs`.`bbsPost` (`userId`, `title`, `vote`, `updatedAt`) VALUES ('4', ' 学习过程会结合相关示例代码，在实践中学习更有成效。', '0', '1545189989');
+INSERT INTO `bbs`.`bbsPost` (`userId`, `title`, `vote`, `updatedAt`) VALUES ('3', '可通过 fork + pull request 的方式，参与到该项目。', '0', '1545190023');
+
+truncate bbsComment;
+INSERT INTO `bbs`.`bbsComment` (`postId`, `userId`, `content`, `updatedAt`) VALUES ('1', '1', 'very good!', '1545185465');
+INSERT INTO `bbs`.`bbsComment` (`postId`, `userId`, `content`, `updatedAt`) VALUES ('1', '2', 'very very good', '1545185485');

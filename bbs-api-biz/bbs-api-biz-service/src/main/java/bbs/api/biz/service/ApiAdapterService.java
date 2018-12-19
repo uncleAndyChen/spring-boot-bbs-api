@@ -25,8 +25,15 @@ public class ApiAdapterService {
             case "getPostList":
                 result = PostService.getPostList(baseRequest);
                 break;
+            case "getCommentList":
+                result = CommentService.getCommentList(baseRequest);
+                break;
             default:
                 return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noSuchMethodException);
+        }
+
+        if (result == null) {
+            return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
         }
 
         apiResponse.setResponseData(result);
