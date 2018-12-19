@@ -4,40 +4,37 @@ import bbs.api.common.model.ModelHelper;
 import bbs.api.common.model.request.BaseRequest;
 import bbs.api.common.model.response.ApiResponse;
 import bbs.api.common.model.response.ResponseCodeEnum;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class ApiAdapterService {
-    public static ApiResponse getApiResponse(BaseRequest baseRequest, HttpServletRequest request, HttpServletResponse response) {
+    public static ApiResponse getApiResponse(BaseRequest baseRequest) {
         try {
-            return getApiResponseFactory(baseRequest, request, response);
+            return getApiResponseFactory(baseRequest);
         } catch (Exception e) {
-            ErrorLogService.addErrorLogApiCall(e, baseRequest, request);
+            ErrorLogService.addErrorLogApiCall(e, baseRequest);
             return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.unknownException, e);
         }
     }
 
-    private static ApiResponse getApiResponseFactory(BaseRequest baseRequest, HttpServletRequest request, HttpServletResponse response) {
-        ApiResponse apiResponse = new ApiResponse();
-        Object result;
+    private static ApiResponse getApiResponseFactory(BaseRequest baseRequest) {
+         if (baseRequest.getMethod() == null) {
+             return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noSuchMethodException);
+         }
 
-        switch (baseRequest.getMethod()) {
+       switch (baseRequest.getMethod()) {
+           case "userLogin":
+               return UserService.userLogin(baseRequest);
             case "getPostList":
-                result = PostService.getPostList(baseRequest);
-                break;
+                return PostService.getPostList(baseRequest);
+           case "getPostByPrimaryKey":
+               return PostService.getPostByPrimaryKey(baseRequest);
+//           case "updatePost":
+//               return PostService.insert(baseRequest);
             case "getCommentList":
-                result = CommentService.getCommentList(baseRequest);
-                break;
+                return CommentService.getCommentList(baseRequest);
+           case "createComment":
+               return CommentService.insert(baseRequest);
             default:
                 return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noSuchMethodException);
         }
-
-        if (result == null) {
-            return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
-        }
-
-        apiResponse.setResponseData(result);
-
-        return apiResponse;
     }
 }

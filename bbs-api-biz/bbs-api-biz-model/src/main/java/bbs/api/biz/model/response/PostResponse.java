@@ -5,6 +5,7 @@ import bbs.api.biz.model.view.AuthorView;
 public class PostResponse {
     private int id;
     private String title;
+    private String content;
     private int vote;
     private String updatedAt;
     private AuthorView author;
@@ -23,6 +24,14 @@ public class PostResponse {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getVote() {

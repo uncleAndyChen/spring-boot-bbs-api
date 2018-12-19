@@ -6,10 +6,6 @@ public class PostMapperExtendSqlProvider {
     public String getPostList(CommonRequest commonRequest) {
         String sql = "select postId, userId, title, vote, updatedAt from bbsPost";
 
-        if (commonRequest.getWhereFieldValue() > 0) {
-            sql += " where postId=#{whereFieldValue,jdbcType=INTEGER}";
-        }
-
         if (commonRequest.getOrderBy().length() > 0) {
             sql += " order by #{orderBy,jdbcType=VARCHAR}";
         }

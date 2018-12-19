@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ErrorLogService {
     private static String env = ConfigProperties.getValue("evn");
 
-    public static void addErrorLogApiCall(Exception e, BaseRequest baseRequest, HttpServletRequest request) {
+    public static void addErrorLogApiCall(Exception e, BaseRequest baseRequest) {
         String parameterJson = JsonHelper.pojoToJsonString(baseRequest);
         LogHelper.add(baseRequest.getMethod(), e);
 
@@ -22,7 +22,8 @@ public class ErrorLogService {
         if (env.equals("localDev")) {
             e.printStackTrace();
         } else {
-            JavaMailHelper.emailErrInfo(baseRequest.getMethod(), "errorMessage:" + e.getMessage()
+            JavaMailHelper.emailErrInfo(baseRequest.getMethod(),
+                    "errorMessage:" + e.getMessage()
                     + "<br><br>StackTraceInfo:" + LogHelper.getStackTraceInfo(e)
                     + "<br><br>baseRequest:" + parameterJson);
         }

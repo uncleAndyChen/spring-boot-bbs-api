@@ -15,4 +15,8 @@ public class CommentDalService {
     public static List<Comment> getCommentList(CommonRequest commonRequest) {
         return commentMapperExtend.getCommentList(commonRequest);
     }
+
+    public static void insert(Comment comment) {
+        commentMapper.insert(comment);
+    }
 }

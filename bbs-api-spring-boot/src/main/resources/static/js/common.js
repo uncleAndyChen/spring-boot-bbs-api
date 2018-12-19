@@ -1,1 +1,1 @@
-var apiUrl = "/bbsApi";
+var apiUrl = "/bbsApiLocally";

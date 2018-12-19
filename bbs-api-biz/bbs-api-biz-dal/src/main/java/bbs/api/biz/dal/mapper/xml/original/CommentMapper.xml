@@ -5,8 +5,10 @@
     <id column="commentId" jdbcType="INTEGER" property="commentId" />
     <result column="postId" jdbcType="INTEGER" property="postId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="updatedAt" jdbcType="INTEGER" property="updatedAt" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="bbs.api.biz.model.entity.Comment">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,8 +69,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    commentId, postId, userId, content, updatedAt
+    commentId, postId, userId, updatedAt
   </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="bbs.api.biz.model.entity.CommentExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from `bbsComment`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="bbs.api.biz.model.entity.CommentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -83,9 +104,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from `bbsComment`
     where commentId = #{commentId,jdbcType=INTEGER}
   </select>
@@ -103,10 +126,10 @@
     <selectKey keyProperty="commentId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsComment` (postId, userId, content, 
-      updatedAt)
-    values (#{postId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{updatedAt,jdbcType=INTEGER})
+    insert into `bbsComment` (postId, userId, updatedAt, 
+      content)
+    values (#{postId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{updatedAt,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="bbs.api.biz.model.entity.Comment">
     <selectKey keyProperty="commentId" order="AFTER" resultType="java.lang.Integer">
@@ -120,11 +143,11 @@
       <if test="userId != null">
         userId,
       </if>
-      <if test="content != null">
-        content,
-      </if>
       <if test="updatedAt != null">
         updatedAt,
+      </if>
+      <if test="content != null">
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -134,11 +157,11 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
-      </if>
       <if test="updatedAt != null">
         #{updatedAt,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -160,13 +183,24 @@
       <if test="record.userId != null">
         userId = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
-      </if>
       <if test="record.updatedAt != null">
         updatedAt = #{record.updatedAt,jdbcType=INTEGER},
       </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update `bbsComment`
+    set commentId = #{record.commentId,jdbcType=INTEGER},
+      postId = #{record.postId,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      updatedAt = #{record.updatedAt,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -176,7 +210,6 @@
     set commentId = #{record.commentId,jdbcType=INTEGER},
       postId = #{record.postId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
-      content = #{record.content,jdbcType=VARCHAR},
       updatedAt = #{record.updatedAt,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,20 +224,27 @@
       <if test="userId != null">
         userId = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
-      </if>
       <if test="updatedAt != null">
         updatedAt = #{updatedAt,jdbcType=INTEGER},
       </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where commentId = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="bbs.api.biz.model.entity.Comment">
+    update `bbsComment`
+    set postId = #{postId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
+      updatedAt = #{updatedAt,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
     where commentId = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="bbs.api.biz.model.entity.Comment">
     update `bbsComment`
     set postId = #{postId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
-      content = #{content,jdbcType=VARCHAR},
       updatedAt = #{updatedAt,jdbcType=INTEGER}
     where commentId = #{commentId,jdbcType=INTEGER}
   </update>

@@ -9,7 +9,7 @@ public class BaseRequest {
     private String jsonStringParameter;  //传递完整的应用级参数信息，json 格式
     private JsonNode jsonNodeParameter;  //对 apiParas 处理之后得到，方便程序加工处理。
     private PagingView pagingView;       //分页信息，无须分页的调用，不用传递该参数。该参数是放在 jsonStringParameter 里传入的，json 字符串
-    private String extendValue;          //扩展参数，各业务方法根据需要传递扩展参数
+    private String extendValue;          //扩展参数，各业务方法根据需要传递扩展参数，比如仅有一个参数的时候可以用此属性
 
     /**
      * 不能删除 setJsonStringParameter

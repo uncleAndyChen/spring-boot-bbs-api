@@ -8,6 +8,9 @@
     <result column="vote" jdbcType="INTEGER" property="vote" />
     <result column="updatedAt" jdbcType="INTEGER" property="updatedAt" />
   </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="bbs.api.biz.model.entity.Post">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -69,6 +72,25 @@
   <sql id="Base_Column_List">
     postId, userId, title, vote, updatedAt
   </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="bbs.api.biz.model.entity.PostExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from `bbsPost`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="bbs.api.biz.model.entity.PostExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -83,9 +105,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from `bbsPost`
     where postId = #{postId,jdbcType=INTEGER}
   </select>
@@ -104,9 +128,9 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into `bbsPost` (userId, title, vote, 
-      updatedAt)
+      updatedAt, content)
     values (#{userId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{vote,jdbcType=INTEGER}, 
-      #{updatedAt,jdbcType=INTEGER})
+      #{updatedAt,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="bbs.api.biz.model.entity.Post">
     <selectKey keyProperty="postId" order="AFTER" resultType="java.lang.Integer">
@@ -126,6 +150,9 @@
       <if test="updatedAt != null">
         updatedAt,
       </if>
+      <if test="content != null">
+        content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -139,6 +166,9 @@
       </if>
       <if test="updatedAt != null">
         #{updatedAt,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,7 +196,22 @@
       <if test="record.updatedAt != null">
         updatedAt = #{record.updatedAt,jdbcType=INTEGER},
       </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update `bbsPost`
+    set postId = #{record.postId,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      vote = #{record.vote,jdbcType=INTEGER},
+      updatedAt = #{record.updatedAt,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,7 +242,19 @@
       <if test="updatedAt != null">
         updatedAt = #{updatedAt,jdbcType=INTEGER},
       </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where postId = #{postId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="bbs.api.biz.model.entity.Post">
+    update `bbsPost`
+    set userId = #{userId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      vote = #{vote,jdbcType=INTEGER},
+      updatedAt = #{updatedAt,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
     where postId = #{postId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="bbs.api.biz.model.entity.Post">

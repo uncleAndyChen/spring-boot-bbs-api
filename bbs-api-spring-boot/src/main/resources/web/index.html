@@ -10,9 +10,13 @@
 <body>
     <h3 align="center">api列表，点击可获取测试数据</h3>
     每页记录数 ：<input type="text" id="pageSize" value="5"/>
-    帖子ID（为0表示不限制） ：<input type="text" id="whereFieldValue" value="0"/>
     &nbsp;&nbsp;
     <a href="javascript:apiPost('getPostList');">获取帖子列表</a>
+    <br/>
+    <hr/>
+    帖子ID ：<input type="text" id="whereFieldValue" value="1"/>
+    &nbsp;&nbsp;
+    <a href="javascript:apiPost('getPostByPrimaryKey');">获取帖子详情</a>
     <br/>
     <hr/>
     每页记录数 ：<input type="text" id="pageSizeForComment" value="5"/>

@@ -10,6 +10,8 @@ public enum ResponseCodeEnum {
     unknownException(-20, "未知异常"),
     noSuchMethodException(-30, "调用了不存在的方法，请联系管理员。"),
     noRecord(-40, "暂无记录"),
+    usernameOrPasswordError(-50, "用户名或密码错误"),
+    parameterError(-60, "参数错误，请联系管理员"),
     ;
 
     private int index;

@@ -7,9 +7,12 @@ function apiPost(method) {
             var parameter = new Object();
             parameter.recordsLimit = document.getElementById("pageSize").value;
             parameter.orderBy = "updatedAt DESC";
-            parameter.whereFieldValue = document.getElementById("whereFieldValue").value;
+            //parameter.whereFieldValue = document.getElementById("whereFieldValue").value;
 
             baseRequest.jsonStringParameter = JSON.stringify(parameter);
+            break;
+        case "getPostByPrimaryKey":
+            baseRequest.extendValue = document.getElementById("whereFieldValue").value;
             break;
         case "getCommentList":
             var parameter = new Object();
