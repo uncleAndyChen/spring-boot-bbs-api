@@ -28,13 +28,14 @@ function apiPost(method) {
         timeout: 600000,
         success: function (o) {
             $("#txtJsonResult").val(JSON.stringify(o));
+            var result = "操作结果：";
 
             if (o.code === 1) {
                 // alert("success!")
-                $("#divResult").html("success!");
+                $("#divResult").html(result + "success!");
             } else {
                 // alert(o.message);
-                $("#divResult").html(o.message);
+                $("#divResult").html(result + o.message);
             }
         },
         error: function (e) {
