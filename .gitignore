@@ -1,4 +1,9 @@
 /target/
+
+bbs-api-spring-boot/target/
+bbs-api-common/*/target/
+bbs-api-biz/*/target/
+
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
