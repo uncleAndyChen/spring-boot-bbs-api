@@ -50,7 +50,7 @@ public class CommentService {
         CommentDalService.insert(comment);
 
         createCommentResponse.setId(comment.getCommentId());
-        createCommentResponse.setPost(comment.getPostId());
+        createCommentResponse.setPostId(comment.getPostId());
         createCommentResponse.setAuthor(comment.getUserId());
         createCommentResponse.setContent(comment.getContent());
         createCommentResponse.setUpdatedAt(DateHelper.stampToDate(comment.getUpdatedAt()));

@@ -3,7 +3,7 @@ package bbs.api.biz.model.response;
 public class CreateCommentResponse {
     private int id;
     private int postId;
-    private int userId;
+    private int author;
     private String content;
     private String updatedAt;
 
@@ -23,12 +23,12 @@ public class CreateCommentResponse {
         this.postId = postId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getAuthor() {
+        return author;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setAuthor(int author) {
+        this.author = author;
     }
 
     public String getContent() {

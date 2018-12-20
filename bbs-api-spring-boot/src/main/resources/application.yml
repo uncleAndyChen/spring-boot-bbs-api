@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/bbs
+    url: jdbc:mysql://localhost:3306/bbs?useSSL=false&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&socketTimeout=20000
     username: root
     password: RoOtPaSs
     driver-class-name: com.mysql.cj.jdbc.Driver
