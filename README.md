@@ -4,7 +4,6 @@
 
 # 说明
 该项目是以下前端项目的后端 api，前端项目是拿《React进阶之路》第九章示例 [bbs-redux-reselect](https://github.com/xuchaobei/react-book/tree/master/chapter-09/bbs-redux-reselect) 来改的。
-
 仅改了调用api部分和添加了一些备注，之前的api用的是[apicloud](https://d.apicloud.com/mcm/api)。
 
 - 前端项目地址
@@ -18,7 +17,7 @@
 
 # 运行步骤
 ## 运行后端
-1. 创建数据库：导入项目根目录下的文件 createTable.sql。仅在 MySQL v5.7.x 和 v8.0.11 上测试通过。
+1. 创建数据库：导入项目根目录下的文件 createTable.sql。仅在 MySQL v5.7.x 和 v8.0.11 上测试过，未在别的版本和别的数据库测试。
 1. 用 IDEA 或者 Eclipse 导入项目，修改数据库连接参数。需要修改的文件：bbs-api-spring-boot/resources/application.yml，修改好之后，运行起来。
 1. 访问 [http://localhost:8080](http://localhost:8080)，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
 
