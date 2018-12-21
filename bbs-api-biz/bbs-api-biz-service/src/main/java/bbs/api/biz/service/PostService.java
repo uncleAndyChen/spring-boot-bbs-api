@@ -3,8 +3,8 @@ package bbs.api.biz.service;
 import bbs.api.biz.dal.service.PostDalService;
 import bbs.api.biz.model.entity.Post;
 import bbs.api.biz.model.request.CommonRequest;
-import bbs.api.biz.model.request.ModifyPostRequest;
-import bbs.api.biz.model.response.ModifyPostResponse;
+import bbs.api.biz.model.request.NewORModifyPostRequest;
+import bbs.api.biz.model.response.NewORModifyPostResponse;
 import bbs.api.biz.model.response.PostResponse;
 import bbs.api.biz.model.view.GlobalView;
 import bbs.api.common.lib.DateHelper;
@@ -50,12 +50,12 @@ public class PostService {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static ApiResponse insertPost(BaseRequest baseRequest) {
-        ModifyPostRequest modifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), ModifyPostRequest.class);
+        NewORModifyPostRequest newORModifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewORModifyPostRequest.class);
         Post post = new Post();
 
-        post.setUserId(CommonFunction.removeGlobalIdPrefixAndConvertToInt(modifyPostRequest.getUserId()));
-        post.setTitle(modifyPostRequest.getTitle());
-        post.setContent(modifyPostRequest.getContent());
+        post.setUserId(CommonFunction.removeGlobalIdPrefixAndConvertToInt(newORModifyPostRequest.getUserId()));
+        post.setTitle(newORModifyPostRequest.getTitle());
+        post.setContent(newORModifyPostRequest.getContent());
         post.setVote(0);
         post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
@@ -65,32 +65,32 @@ public class PostService {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static ApiResponse updatePost(BaseRequest baseRequest) {
-        ModifyPostRequest modifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), ModifyPostRequest.class);
-        Post post = PostDalService.getPostByPrimaryKey(CommonFunction.removeGlobalIdPrefixAndConvertToInt(modifyPostRequest.getPostId()));
+        NewORModifyPostRequest newORModifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewORModifyPostRequest.class);
+        Post post = PostDalService.getPostByPrimaryKey(CommonFunction.removeGlobalIdPrefixAndConvertToInt(newORModifyPostRequest.getPostId()));
 
         if (post == null) {
             return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
         }
 
-        post.setTitle(modifyPostRequest.getTitle());
-        post.setContent(modifyPostRequest.getContent());
+        post.setTitle(newORModifyPostRequest.getTitle());
+        post.setContent(newORModifyPostRequest.getContent());
         post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
         PostDalService.update(post);
         return new ApiResponse(getModifyPostResponse(post));
     }
 
-    private static ModifyPostResponse getModifyPostResponse(Post post) {
-        ModifyPostResponse modifyPostResponse = new ModifyPostResponse();
+    private static NewORModifyPostResponse getModifyPostResponse(Post post) {
+        NewORModifyPostResponse newORModifyPostResponse = new NewORModifyPostResponse();
 
-        modifyPostResponse.setId(GlobalView.idPrefix + post.getPostId());
-        modifyPostResponse.setAuthor(GlobalView.idPrefix + post.getUserId());
-        modifyPostResponse.setUpdatedAt(DateHelper.stampToDate(post.getUpdatedAt()));
-        modifyPostResponse.setTitle(post.getTitle());
-        modifyPostResponse.setContent(post.getContent());
-        modifyPostResponse.setVote(post.getVote());
+        newORModifyPostResponse.setId(GlobalView.idPrefix + post.getPostId());
+        newORModifyPostResponse.setAuthor(GlobalView.idPrefix + post.getUserId());
+        newORModifyPostResponse.setUpdatedAt(DateHelper.stampToDate(post.getUpdatedAt()));
+        newORModifyPostResponse.setTitle(post.getTitle());
+        newORModifyPostResponse.setContent(post.getContent());
+        newORModifyPostResponse.setVote(post.getVote());
 
-        return modifyPostResponse;
+        return newORModifyPostResponse;
     }
 
     private static PostResponse getPostResponseByPost(Post post) {

@@ -1,6 +1,6 @@
 package bbs.api.biz.model.request;
 
-public class ModifyPostRequest {
+public class NewORModifyPostRequest {
     private String postId;
     private String userId;
     private String title;
