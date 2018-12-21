@@ -13,7 +13,7 @@
 # 使用技术
 - [Spring Boot v2.1.1](https://github.com/spring-projects/spring-boot)
 - [MyBatis v3.4.6](https://github.com/mybatis/mybatis-3)
-- [MyBatis Generator (MBG) v1.3.7](https://github.com/mybatis/generator)，关于如何使用，请参考我的另外一个项目：[mybatis-generator](https://github.com/uncleAndyChen/mybatis-generator)
+- [MyBatis Generator (MBG) v1.3.7](https://github.com/mybatis/generator)，关于如何使用，请查看项目根目录下的 generatorConfig.xml 末尾说明。也可以参考我的另外一个项目：[mybatis-generator](https://github.com/uncleAndyChen/mybatis-generator)，该项目有针对 MBG 写扩展。
 
 # 运行步骤
 ## 运行后端
@@ -29,10 +29,11 @@
 
 ## 登录
 登录之后，才可以发帖和评论。
-- 该bbs内置三个用户
+- 初始化了四个用户
     - tom
     - jack
     - steve
+    - AndyChen
 - 密码都是：123456
 
 # 计划
@@ -56,6 +57,7 @@
 - 2018-12-21：完成与前端项目对接剩下的工作。
     - 解决帖子详情页面报错的问题，刷新和创建评论均正常。
     - 完成：创建帖子功能、修改帖子功能。
+    - 完善项目说明。
 
 # 填坑记
 数据库设计，主建一律采用自增主键（int 类型），而前端项目，会拿各表的 int 类型的主键当 key 来保存数据之间的关联关系，这样导致数据在 state 与各页面间传输的过程中大乱。
