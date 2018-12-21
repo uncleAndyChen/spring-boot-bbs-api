@@ -5,11 +5,11 @@
 # 说明
 该项目是以下前端项目的后端 api，前端项目是拿《React进阶之路》第九章示例 [bbs-redux-reselect](https://github.com/xuchaobei/react-book/tree/master/chapter-09/bbs-redux-reselect) 来改的。
 
+仅改了调用api部分和添加了一些备注，之前的api用的是[apicloud](https://d.apicloud.com/mcm/api)。
+
 - 前端项目地址
     - 托管在 github 上的项目链接：https://github.com/uncleAndyChen/react-full-stack-learning
     - 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/react-full-stack-learning
-
-仅改了调用api部分和添加了一些备注，之前的api用的是[apicloud](https://d.apicloud.com/mcm/api)。
 
 # 使用技术
 - [Spring Boot v2.1.1](https://github.com/spring-projects/spring-boot)
