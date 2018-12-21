@@ -4,7 +4,7 @@ import bbs.api.biz.dal.service.PostDalService;
 import bbs.api.biz.model.entity.Post;
 import bbs.api.biz.model.request.CommonRequest;
 import bbs.api.biz.model.request.ModifyPostRequest;
-import bbs.api.biz.model.response.NewPostResponse;
+import bbs.api.biz.model.response.ModifyPostResponse;
 import bbs.api.biz.model.response.PostResponse;
 import bbs.api.biz.model.view.GlobalView;
 import bbs.api.common.lib.DateHelper;
@@ -60,7 +60,7 @@ public class PostService {
         post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
         PostDalService.insert(post);
-        return new ApiResponse(getNewPostResponse(post));
+        return new ApiResponse(getModifyPostResponse(post));
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -77,20 +77,20 @@ public class PostService {
         post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
         PostDalService.update(post);
-        return new ApiResponse(getNewPostResponse(post));
+        return new ApiResponse(getModifyPostResponse(post));
     }
 
-    private static NewPostResponse getNewPostResponse(Post post) {
-        NewPostResponse newPostResponse = new NewPostResponse();
+    private static ModifyPostResponse getModifyPostResponse(Post post) {
+        ModifyPostResponse modifyPostResponse = new ModifyPostResponse();
 
-        newPostResponse.setId(GlobalView.idPrefix + post.getPostId());
-        newPostResponse.setAuthor(GlobalView.idPrefix + post.getUserId());
-        newPostResponse.setUpdatedAt(DateHelper.stampToDate(post.getUpdatedAt()));
-        newPostResponse.setTitle(post.getTitle());
-        newPostResponse.setContent(post.getContent());
-        newPostResponse.setVote(post.getVote());
+        modifyPostResponse.setId(GlobalView.idPrefix + post.getPostId());
+        modifyPostResponse.setAuthor(GlobalView.idPrefix + post.getUserId());
+        modifyPostResponse.setUpdatedAt(DateHelper.stampToDate(post.getUpdatedAt()));
+        modifyPostResponse.setTitle(post.getTitle());
+        modifyPostResponse.setContent(post.getContent());
+        modifyPostResponse.setVote(post.getVote());
 
-        return newPostResponse;
+        return modifyPostResponse;
     }
 
     private static PostResponse getPostResponseByPost(Post post) {

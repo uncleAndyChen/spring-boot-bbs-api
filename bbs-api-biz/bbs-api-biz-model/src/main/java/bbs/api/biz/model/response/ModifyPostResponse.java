@@ -1,6 +1,6 @@
 package bbs.api.biz.model.response;
 
-public class NewPostResponse {
+public class ModifyPostResponse {
     private String id;
     private String author;
     private String title;
