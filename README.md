@@ -66,7 +66,7 @@
 - 有的地方，用 state.get(key) 获取数据时，由于 key 是 int 类型，而 state 的类型为 Map，通过修改 js 代码，用 String(key) 的方式将 key 转化为字符类型，但是即使这样转了，有的变量的（Map类型）的 key 还是为 int 类型，应该是自动转了。这样，导致本来应该有数据的地方可能得不到。最后的现象就是：帖子详情页面首次加载正常，但是刷新的时候，又取不到数据了。
 - 修改 spring-boot-bbs-api 的 API，把返回的数据，将所有自增 id 改为 String 类型，问题依旧。
 - 获取数据时，以字符作为 key 和以 int 作为 key，取到的数据不一样，分别为 Map 和 Object。
-![](./bbs-api-spring-boot/resources/static/img/reactGet.png)
+![](./bbs-api-spring-boot/src/main/resources/static/img/reactGet.png)
 
 ## 解决
 将 React 的 state 中用作 key 的数据，用字符而非数字。
