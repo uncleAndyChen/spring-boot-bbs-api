@@ -24,7 +24,9 @@ public class CommentService {
         List<Comment> commentList = CommentDalService.getCommentList(commonRequest);
 
         if (commentList.size() == 0) {
-            return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
+            //return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
+            // react 端需要一个空数组来初始化评论列表，否则在第一条新评论添加的时候因为变量未初始化会报错。
+            return new ApiResponse(new ArrayList<>());
         }
 
         List<CommentResponse> commentResponseList = new ArrayList<>();
