@@ -7,18 +7,26 @@
 
 仅改了调用api部分和添加了一些备注，之前的api用的是[apicloud](https://d.apicloud.com/mcm/api)。
 
+# 使用技术
+- [Spring Boot v2.1.1](https://github.com/spring-projects/spring-boot)
+- [MyBatis v3.4.6](https://github.com/mybatis/mybatis-3)
+- [MyBatis Generator (MBG) v1.3.7](https://github.com/mybatis/generator)，关于如何使用，请参考我的另外一个项目：[mybatis-generator](https://github.com/uncleAndyChen/mybatis-generator)
+
 # 前端项目地址
 * 托管在 github 上的项目链接：https://github.com/uncleAndyChen/react-full-stack-learning
 * 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/react-full-stack-learning
 
 # 运行步骤
 ## 运行后端
-1. 创建数据库：导入项目根目录下的文件 createTable.sql。
+1. 创建数据库：导入项目根目录下的文件 createTable.sql。仅在 MySQL v5.7.x 和 v8.0.11 上测试通过。
 1. 用 IDEA 或者 Eclipse 导入项目，修改数据库连接参数。需要修改的文件：bbs-api-spring-boot/resources/application.yml，修改好之后，运行起来。
-1. 访问 http://localhost:8080，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
+1. 访问 [http://localhost:8080](http://localhost:8080)，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
 
 ## 运行前端
-在 cmd 窗口下，进入项目根目录，执行 `npm start`。
+在 cmd 窗口下，进入前端项目根目录，执行 `npm start`。
+
+## 用 WebStorm 调试前端 React 
+请参考：[像用 IDEA 调试 Java 代码一样，用 WebStorm 调试 react 代码](https://www.lovesofttech.com/react/JetBrainsIDESupport)
 
 ## 登录
 登录之后，才可以发帖和评论。
