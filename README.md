@@ -11,6 +11,23 @@
 * 托管在 github 上的项目链接：https://github.com/uncleAndyChen/react-full-stack-learning
 * 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/react-full-stack-learning
 
+# 运行步骤
+## 运行后端
+1. 创建数据库：导入项目根目录下的文件 createTable.sql。
+1. 用 IDEA 或者 Eclipse 导入项目，修改数据库连接参数。需要修改的文件：bbs-api-spring-boot/resources/application.yml，修改好之后，运行起来。
+1. 访问 http://localhost:8080，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
+
+## 运行前端
+在 cmd 窗口下，进入项目根目录，执行 `npm start`。
+
+## 登录
+登录之后，才可以发帖和评论。
+- 该bbs内置三个用户
+    - tom
+    - jack
+    - steve
+- 密码都是：123456
+
 # 计划
 由于只是利用业余时间完成该项目，进度可能会比较慢甚至短期中断。
 1. [x] 基础框架搭建
@@ -18,10 +35,9 @@
 1. [x] 查询评价列表
 1. [x] 查询单个帖子
 1. [x] 与前端项目对接
-1. [ ] 使用分页插件
 1. [ ] 使用druid
 1. [ ] 项目文档
-1. [ ] 将前端项目用 [ant-design](https://github.com/ant-design/ant-design) 改造，同时添加分页功能。
+1. [ ] 将前端项目用 [ant-design](https://github.com/ant-design/ant-design) 改造，使用**分页插件和添加分页功能**。
 
 # 修改记录
 - 2018-12-19：项目基础架构搭建完成，可以正常查询数据，目前仅完成帖子列表的查询，暂未与前端项目对接。
