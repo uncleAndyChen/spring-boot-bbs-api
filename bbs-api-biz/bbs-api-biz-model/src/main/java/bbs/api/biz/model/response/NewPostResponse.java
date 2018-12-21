@@ -1,14 +1,12 @@
 package bbs.api.biz.model.response;
 
-import bbs.api.biz.model.view.AuthorView;
-
-public class PostResponse {
+public class NewPostResponse {
     private String id;
+    private String author;
     private String title;
     private String content;
     private int vote;
     private String updatedAt;
-    private AuthorView author;
 
     public String getId() {
         return id;
@@ -16,6 +14,14 @@ public class PostResponse {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getTitle() {
@@ -48,13 +54,5 @@ public class PostResponse {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public AuthorView getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(AuthorView author) {
-        this.author = author;
     }
 }

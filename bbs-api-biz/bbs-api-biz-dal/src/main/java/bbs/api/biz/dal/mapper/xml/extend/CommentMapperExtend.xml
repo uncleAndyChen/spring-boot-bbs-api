@@ -4,7 +4,7 @@
     <select id="getCommentList" parameterType="bbs.api.biz.model.request.CommonRequest" resultType="bbs.api.biz.model.entity.Comment">
         select commentId,userId,content,updatedAt from bbsComment
         <where>
-            postId=#{whereFieldValue,jdbcType=INTEGER}
+            postId=#{whereFieldValue,jdbcType=VARCHAR}
         </where>
         <if test="orderBy != null and orderBy!=''">
             order by #{orderBy, jdbcType=VARCHAR}

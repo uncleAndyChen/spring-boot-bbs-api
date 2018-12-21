@@ -5,6 +5,7 @@ import bbs.api.biz.model.entity.User;
 import bbs.api.biz.model.request.UserLoginRequest;
 import bbs.api.biz.model.response.UserLoginResponse;
 import bbs.api.biz.model.view.AuthorView;
+import bbs.api.biz.model.view.GlobalView;
 import bbs.api.common.lib.JsonHelper;
 import bbs.api.common.model.ModelHelper;
 import bbs.api.common.model.request.BaseRequest;
@@ -20,7 +21,7 @@ public class UserService {
 
         if (user != null) {
             AuthorView authorView = new AuthorView();
-            authorView.setId(user.getUserId());
+            authorView.setId(GlobalView.idPrefix + user.getUserId());
             authorView.setUsername(user.getUsername());
 
             return authorView;
@@ -44,7 +45,7 @@ public class UserService {
         }
 
         UserLoginResponse userLoginResponse = new UserLoginResponse();
-        userLoginResponse.setUserId(user.getUserId());
+        userLoginResponse.setUserId(GlobalView.idPrefix + user.getUserId());
 
         return new ApiResponse(userLoginResponse);
     }

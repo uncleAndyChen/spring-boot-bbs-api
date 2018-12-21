@@ -3,16 +3,16 @@ package bbs.api.biz.model.response;
 import bbs.api.biz.model.view.AuthorView;
 
 public class CommentResponse {
-    private int id;
+    private String id;
     private String content;
     private String updatedAt;
     private AuthorView author;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

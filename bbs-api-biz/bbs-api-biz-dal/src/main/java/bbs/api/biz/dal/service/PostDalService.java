@@ -16,7 +16,15 @@ public class PostDalService {
         return postMapperExtend.getPostList(commonRequest);
     }
 
-    public static Post getPostByPrimaryKey(int postId) {
+   public static void insert(Post post) {
+       postMapper.insert(post);
+   }
+
+   public static void update(Post post) {
+        postMapper.updateByPrimaryKey(post);
+   }
+
+   public static Post getPostByPrimaryKey(int postId) {
         return postMapper.selectByPrimaryKey(postId);
     }
 }

@@ -1,9 +1,18 @@
 package bbs.api.biz.model.request;
 
+import bbs.api.biz.model.view.GlobalView;
+
 public class CommonRequest {
     private int recordsLimit = 0;
     private String orderBy = "";
-    private int whereFieldValue = 0;
+    private String whereFieldValue = "0";
+
+    /**
+     * 该方法不能删除重新生成，需要在这里去掉前缀
+     */
+    public void setWhereFieldValue(String whereFieldValue) {
+        this.whereFieldValue = whereFieldValue.replace(GlobalView.idPrefix, "");
+    }
 
     public int getRecordsLimit() {
         return recordsLimit;
@@ -21,11 +30,7 @@ public class CommonRequest {
         this.orderBy = orderBy;
     }
 
-    public int getWhereFieldValue() {
+    public String getWhereFieldValue() {
         return whereFieldValue;
-    }
-
-    public void setWhereFieldValue(int whereFieldValue) {
-        this.whereFieldValue = whereFieldValue;
     }
 }

@@ -3,9 +3,10 @@ package bbs.api.biz.service;
 import bbs.api.biz.dal.service.CommentDalService;
 import bbs.api.biz.model.entity.Comment;
 import bbs.api.biz.model.request.CommonRequest;
-import bbs.api.biz.model.request.CreateCommentRequest;
+import bbs.api.biz.model.request.NewCommentRequest;
 import bbs.api.biz.model.response.CommentResponse;
-import bbs.api.biz.model.response.CreateCommentResponse;
+import bbs.api.biz.model.response.NewCommentResponse;
+import bbs.api.biz.model.view.GlobalView;
 import bbs.api.common.lib.DateHelper;
 import bbs.api.common.lib.JsonHelper;
 import bbs.api.common.model.ModelHelper;
@@ -37,31 +38,31 @@ public class CommentService {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static ApiResponse insert(BaseRequest baseRequest) {
-        CreateCommentRequest createCommentRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), CreateCommentRequest.class);
+        NewCommentRequest newCommentRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewCommentRequest.class);
 
         Comment comment = new Comment();
-        CreateCommentResponse createCommentResponse = new CreateCommentResponse();
+        NewCommentResponse newCommentResponse = new NewCommentResponse();
 
-        comment.setPostId(createCommentRequest.getPostId());
-        comment.setContent(createCommentRequest.getContent());
-        comment.setUserId(createCommentRequest.getUserId());
+        comment.setPostId(CommonFunction.removeGlobalIdPrefixAndConvertToInt(newCommentRequest.getPostId()));
+        comment.setContent(newCommentRequest.getContent());
+        comment.setUserId(CommonFunction.removeGlobalIdPrefixAndConvertToInt(newCommentRequest.getUserId()));
         comment.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
         CommentDalService.insert(comment);
 
-        createCommentResponse.setId(comment.getCommentId());
-        createCommentResponse.setPostId(comment.getPostId());
-        createCommentResponse.setAuthor(comment.getUserId());
-        createCommentResponse.setContent(comment.getContent());
-        createCommentResponse.setUpdatedAt(DateHelper.stampToDate(comment.getUpdatedAt()));
+        newCommentResponse.setId(GlobalView.idPrefix + comment.getCommentId());
+        newCommentResponse.setPostId(GlobalView.idPrefix + comment.getPostId());
+        newCommentResponse.setAuthor(GlobalView.idPrefix + comment.getUserId());
+        newCommentResponse.setContent(comment.getContent());
+        newCommentResponse.setUpdatedAt(DateHelper.stampToDate(comment.getUpdatedAt()));
 
-        return new ApiResponse(createCommentResponse);
+        return new ApiResponse(newCommentResponse);
     }
 
     private static CommentResponse getCommentResponse(Comment comment) {
         CommentResponse commentResponse = new CommentResponse();
 
-        commentResponse.setId(comment.getCommentId());
+        commentResponse.setId(GlobalView.idPrefix + comment.getCommentId());
         commentResponse.setContent(comment.getContent());
         commentResponse.setUpdatedAt(DateHelper.stampToDate(comment.getUpdatedAt()));
         commentResponse.setAuthor(UserService.getAuthorView(comment.getUserId()));

@@ -27,8 +27,10 @@ public class ApiAdapterService {
                 return PostService.getPostList(baseRequest);
            case "getPostByPrimaryKey":
                return PostService.getPostByPrimaryKey(baseRequest);
-//           case "updatePost":
-//               return PostService.insert(baseRequest);
+           case "insertPost":
+               return PostService.insertPost(baseRequest);
+           case "updatePost":
+               return PostService.updatePost(baseRequest);
             case "getCommentList":
                 return CommentService.getCommentList(baseRequest);
            case "createComment":
