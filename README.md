@@ -14,12 +14,18 @@
 - [Spring Boot v2.1.1](https://github.com/spring-projects/spring-boot)
 - [MyBatis v3.4.6](https://github.com/mybatis/mybatis-3)
 - [MyBatis Generator (MBG) v1.3.7](https://github.com/mybatis/generator)，关于如何使用，请查看项目根目录下的 generatorConfig.xml 末尾说明。也可以参考我的另外一个项目：[mybatis-generator](https://github.com/uncleAndyChen/mybatis-generator)，该项目有针对 MBG 写扩展。
+- [druid v1.1.10](https://github.com/alibaba/druid)
+- [druid-spring-boot-starter v1.1.10](https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter)
+    - [配置_StatFilter](https://github.com/alibaba/druid/wiki/配置_StatFilter)
+    - [使用Druid的内置监控页面->配置_StatViewServlet配置](https://github.com/alibaba/druid/wiki/配置_StatViewServlet配置)
+
+druid 的监控功能，配置参照 bbs-api-spring-boot/application.yml。项目启动之后，访问：http://localhost:88/druid，会自动跳转至：http://localhost:88/druid/login.html，要求输入配置的用户名和密码。
 
 # 运行步骤
 ## 运行后端
 1. 创建数据库：导入项目根目录下的文件 createTable.sql。仅在 MySQL v5.7.x 和 v8.0.11 上测试过，未在别的版本和别的数据库测试。
 1. 用 IDEA 或者 Eclipse 导入项目，修改数据库连接参数。需要修改的文件：bbs-api-spring-boot/resources/application.yml，修改好之后，运行起来。
-1. 访问 [http://localhost:8080](http://localhost:8080)，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
+1. 访问 [http://localhost:88](http://localhost:88)，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
 
 ## 运行前端
 在 cmd 窗口下，进入前端项目根目录，执行 `npm start`。
@@ -43,9 +49,9 @@
 1. [x] 查询评价列表
 1. [x] 查询单个帖子
 1. [x] 与前端项目对接
-1. [ ] 使用druid
-1. [ ] 项目文档
+1. [x] 使用 Druid（能够提供强大的监控和扩展功能。本项目使用 Druid，仅为学习目的。实际项目中，完全可以不用 Druid 的。）
 1. [ ] 将前端项目用 [ant-design](https://github.com/ant-design/ant-design) 改造，使用**分页插件和添加分页功能**。
+1. [ ] 项目文档
 
 # 修改记录
 - 2018-12-19：项目基础架构搭建完成，可以正常查询数据，目前仅完成帖子列表的查询，暂未与前端项目对接。
