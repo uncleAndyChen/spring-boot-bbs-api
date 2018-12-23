@@ -49,7 +49,7 @@ druid 的监控功能，配置参照 bbs-api-spring-boot/application.yml。项�
 1. [x] 查询评价列表
 1. [x] 查询单个帖子
 1. [x] 与前端项目对接
-1. [x] 使用 Druid（能够提供强大的监控和扩展功能。本项目使用 Druid，仅为学习目的。实际项目中，完全可以不用 Druid 的。）
+1. [x] 使用 Druid（能够提供强大的监控和扩展功能。本项目使用 Druid，仅供学习。实际项目中，完全可以不用 Druid 的。）
 1. [ ] 将前端项目用 [ant-design](https://github.com/ant-design/ant-design) 改造，使用**分页插件和添加分页功能**。
 1. [ ] 项目文档
 
