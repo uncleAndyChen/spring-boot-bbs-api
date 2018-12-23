@@ -3,10 +3,9 @@ use bbs;
 set names utf8mb4;
 
 drop table if exists bbsComment;
-
 drop table if exists bbsPost;
-
 drop table if exists bbsUser;
+drop table if exists bbsUserStarAndPraiseMap;
 
 /*==============================================================*/
 /* Table: bbsComment                                            */
@@ -52,6 +51,21 @@ create table bbsUser
 );
 
 alter table bbsUser comment 'bbsUser 用户';
+
+/*==============================================================*/
+/* Table: bbsUserStarAndPraiseMap                               */
+/*==============================================================*/
+create table bbsUserStarAndPraiseMap
+(
+   userSAPMId           int not null auto_increment  comment '',
+   userId               int  comment '用户Id',
+   postId               int  comment '帖子Id',
+   mapType              int  comment '关联类型：1. stat 2. praise',
+   createdAt            int  comment '创建时间',
+   primary key (userSAPMId)
+);
+
+alter table bbsUserStarAndPraiseMap comment 'bbsUserStarAndPraiseMap 用户标星（收藏）、点赞关联表';
 
 -- init datas
 truncate bbsUser;

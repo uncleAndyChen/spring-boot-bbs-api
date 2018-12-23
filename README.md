@@ -54,12 +54,15 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
     - [x] 创建帖子
     - [x] 修改帖子
     - [ ] 点赞功能（点赞之前需要先登录，每个用户对同一个帖子，点赞之后可取消点赞，类似微信朋友圈儿的点赞功能）
+    - [ ] 收藏功能（在操作上类似点赞），菜单增加【我的收藏】
 1. [x] 使用 Druid
     - [官方介绍](https://github.com/alibaba/druid/wiki/常见问题)：Druid是Java语言中最好的数据库连接池。Druid能够提供强大的监控和扩展功能。
     - 本项目使用 Druid，仅供学习。
     - 实际项目中，可根据情况决定是否采用 Druid，也可以选择业界其他优秀的数据库连接池。
     - 或者，如果使用 spring boot，可直接用 spring boot 默认的数据库连接池。
         > [Springboot 2.x 选择 HikariCP 作为默认数据库连接池](https://blog.csdn.net/zxl315/article/details/80420688)
+1. [ ] 通过增加参数的方式，解决 MyBatis 动态排序字段，用 ${} 方式不生效的问题。
+    > 用这种方式替代 ${} 方案，${} 方案始终还是不稳妥，有 sql 注入的风险。
 1. [ ] 将前端项目用 [ant-design](https://github.com/ant-design/ant-design) 改造，使用**分页插件和添加分页功能**。
 1. [ ] 项目文档
 
@@ -90,3 +93,9 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
 - 保留数据库设计，在返回数据之前，将主键 id 添加前缀。
 - 帖子详情页面，需要用帖子“主键”查询时，将传过来的参数的前缀过滤掉。
 - 创建评论，入库前，将传过来的“主键”信息的前缀过滤掉，同时转化为 int。
+
+# 加群一起学习
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=2960c66b59efccc81149126d4f740719d58bdef14589960584dc2838ceb9093b"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="react stack(react全家桶)" title="react stack(react全家桶)"></a>
+（QQ 群号：683414457，进群密码：`react stack`）
+
+![](https://www.lovesofttech.com/img/react/reactStackLearning.png)
