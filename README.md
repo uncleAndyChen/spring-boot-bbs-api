@@ -61,8 +61,8 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
     - 实际项目中，可根据情况决定是否采用 Druid，也可以选择业界其他优秀的数据库连接池。
     - 或者，如果使用 spring boot，可直接用 spring boot 默认的数据库连接池。
         > [Springboot 2.x 选择 HikariCP 作为默认数据库连接池](https://blog.csdn.net/zxl315/article/details/80420688)
-1. [ ] 通过增加参数的方式，解决 MyBatis 动态排序字段，用 ${} 方式不生效的问题。
-    > 用这种方式替代 ${} 方案，${} 方案始终还是不稳妥，有 sql 注入的风险。
+1. [ ] 通过增加参数的方式，解决 MyBatis 动态排序字段，参数用 #{} 方式不生效的问题。
+    > 用这种方式替代 ${} 方案，${} 方案始终还是不稳妥，有 sql 注入的风险。（网上找到的解决办法是用 ${} 方式）
 1. [ ] 将前端项目用 [ant-design](https://github.com/ant-design/ant-design) 改造，使用**分页插件和添加分页功能**。
 1. [ ] 项目文档
 
