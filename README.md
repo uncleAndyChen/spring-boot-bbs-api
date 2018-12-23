@@ -10,7 +10,7 @@
     - 托管在 github 上的项目链接：https://github.com/uncleAndyChen/react-full-stack-learning
     - 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/react-full-stack-learning
 
-# 使用技术
+# 技术栈
 - [Spring Boot v2.1.1](https://github.com/spring-projects/spring-boot)
 - [MyBatis v3.4.6](https://github.com/mybatis/mybatis-3)
 - [MyBatis Generator (MBG) v1.3.7](https://github.com/mybatis/generator)，关于如何使用，请查看项目根目录下的 `generatorConfig.xml` 末尾说明。也可以参考我的另外一个项目：[mybatis-generator](https://github.com/uncleAndyChen/mybatis-generator)，该项目有针对 MBG 写扩展。
@@ -53,7 +53,7 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
     - [x] 创建评价
     - [x] 创建帖子
     - [x] 修改帖子
-    - [ ] 添加点赞功能（点赞之前需要先登录，每个用户对同一个帖子，只能点赞一次）
+    - [ ] 点赞功能（点赞之前需要先登录，每个用户对同一个帖子，点赞之后可取消点赞，类似微信朋友圈儿的点赞功能）
 1. [x] 使用 Druid
     - [官方介绍](https://github.com/alibaba/druid/wiki/常见问题)：Druid是Java语言中最好的数据库连接池。Druid能够提供强大的监控和扩展功能。
     - 本项目使用 Druid，仅供学习。
