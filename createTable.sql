@@ -60,7 +60,7 @@ create table bbsUserStarAndPraiseMap
    userSAPMId           int not null auto_increment  comment '',
    userId               int  comment '用户Id',
    postId               int  comment '帖子Id',
-   mapType              int  comment '关联类型：1. stat 2. praise',
+   mapType              int  comment '关联类型：1. star 2. praise',
    createdAt            int  comment '创建时间',
    primary key (userSAPMId)
 );

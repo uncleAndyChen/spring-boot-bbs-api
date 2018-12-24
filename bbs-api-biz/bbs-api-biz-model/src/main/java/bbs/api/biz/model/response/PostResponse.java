@@ -9,8 +9,8 @@ public class PostResponse {
     private int vote;
     private String updatedAt;
     private AuthorView author;
-    private boolean flagPraise; // 记录当前登录用户是否点赞。
-    private boolean flagStar;   // 记录当前登录用户是否标星。
+    private boolean flagPraise; // 记录当前登录用户是否点赞
+    private boolean flagStar;   // 记录当前登录用户是否标星
 
     public String getId() {
         return id;
