@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.uncleAndyChen</groupId>
-    <artifactId>bbs-api</artifactId>
+    <artifactId>spring-boot-bbs-api</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1</version>
 

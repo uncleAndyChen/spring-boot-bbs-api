@@ -1,6 +1,6 @@
 package io.github.uncleandychen.bbs.api.controller;
 
-import bbs.api.biz.service.ApiAdapterService;
+import bbs.api.biz.facade.ApiAdapterService;
 import bbs.api.common.lib.ConfigProperties;
 import bbs.api.common.model.request.BaseRequest;
 import bbs.api.common.model.response.ApiResponse;

@@ -1,5 +1,9 @@
-package bbs.api.biz.service;
+package bbs.api.biz.facade;
 
+import bbs.api.biz.service.CommentService;
+import bbs.api.biz.service.ErrorLogService;
+import bbs.api.biz.service.PostService;
+import bbs.api.biz.service.UserService;
 import bbs.api.common.model.ModelHelper;
 import bbs.api.common.model.request.BaseRequest;
 import bbs.api.common.model.response.ApiResponse;

@@ -94,7 +94,7 @@
         </dependency>
         <dependency>
             <groupId>io.github.uncleAndyChen</groupId>
-            <artifactId>bbs-api-biz-service</artifactId>
+            <artifactId>bbs-api-biz-facade</artifactId>
             <version>0.0.1</version>
         </dependency>
     </dependencies>
