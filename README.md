@@ -95,7 +95,7 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
 - 创建评论，入库前，将传过来的“主键”信息的前缀过滤掉，同时转化为 int。
 
 # 加群一起学习
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=2960c66b59efccc81149126d4f740719d58bdef14589960584dc2838ceb9093b"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="react stack(react全家桶)" title="react stack(react全家桶)"></a>
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bdff785e1413e413a8f88187c9807306893951282103fad3b3080f05e829bd7b"><img border="0" src="https://github.com/uncleAndyChen/react-full-stack-learning/raw/master/doc/images/qqGroup.png" alt="react stack(react全家桶)" title="react stack(react全家桶)"></a>
 （QQ 群号：683414457，进群密码：`react stack`）
 
 ![](https://www.lovesofttech.com/img/react/reactStackLearning.png)
