@@ -1,5 +1,5 @@
 server:
-  port: 88
+  port: 89
 spring:
   datasource:
     druid:
@@ -42,7 +42,7 @@ spring:
       stat-view-servlet:
         # 是否启用StatViewServlet默认值true
         enabled: true
-        # 项目启动之后，访问：http://localhost:88/druid，会自动跳转至：http://localhost:88/druid/login.html，要求输入这里配置的用户名和密码
+        # 项目启动之后，访问：http://localhost:89/druid，会自动跳转至：http://localhost:89/druid/login.html，要求输入这里配置的用户名和密码
         url-pattern: /druid/*
         login-username: admin
         login-password: adminPass

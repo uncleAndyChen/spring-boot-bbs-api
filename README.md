@@ -19,13 +19,13 @@
     - [配置_StatFilter](https://github.com/alibaba/druid/wiki/配置_StatFilter)
     - [使用Druid的内置监控页面->配置_StatViewServlet配置](https://github.com/alibaba/druid/wiki/配置_StatViewServlet配置)
 
-druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项目启动之后，访问：`http://localhost:88/druid`，会自动跳转至：`http://localhost:88/druid/login.html`，要求输入配置的用户名和密码。
+druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项目启动之后，访问：`http://localhost:89/druid`，会自动跳转至：`http://localhost:89/druid/login.html`，要求输入配置的用户名和密码。
 
 # 运行步骤
 ## 运行后端
 1. 创建数据库：导入项目根目录下的文件 createTable.sql。仅在 MySQL v5.7.x 和 v8.0.11 上测试过，未在别的版本和别的数据库测试。
 1. 用 IDEA 或者 Eclipse 导入项目，修改数据库连接参数。需要修改的文件：`bbs-api-spring-boot/resources/application.yml`，修改好之后，运行起来。
-1. 访问 `http://localhost:88`，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
+1. 访问 `http://localhost:89`，可看到 api 测试页面，点击【获取帖子列表】、【获取帖子详情】、【获取评论列表】试试，正常情况下，可以读到数据。
 
 ## 运行前端
 在 cmd 窗口下，进入前端项目根目录，执行 `npm start`。
@@ -67,6 +67,8 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
 1. [ ] 项目文档
 
 # 修改记录
+- 2019-03-11：将默认端口由88改为89。
+    - MacOS 下，88端口默认被Kerberos占用。
 - 2018-12-22：添加 Druid 数据库连接池。
 - 2018-12-21：完成与前端项目对接剩下的工作。
     - 解决帖子详情页面报错的问题，刷新和创建评论均正常。
