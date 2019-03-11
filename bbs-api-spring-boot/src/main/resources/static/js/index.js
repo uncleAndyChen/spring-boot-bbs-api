@@ -7,6 +7,7 @@ function apiPost(method) {
             var parameter = new Object();
             parameter.recordsLimit = document.getElementById("pageSize").value;
             parameter.orderBy = "updatedAt";
+            parameter.orderByDesc = true;
             //parameter.whereFieldValue = document.getElementById("whereFieldValue").value;
 
             baseRequest.jsonStringParameter = JSON.stringify(parameter);
