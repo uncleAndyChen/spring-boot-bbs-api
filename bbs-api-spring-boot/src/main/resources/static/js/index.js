@@ -6,7 +6,7 @@ function apiPost(method) {
         case "getPostList":
             var parameter = new Object();
             parameter.recordsLimit = document.getElementById("pageSize").value;
-            parameter.orderBy = "updatedAt DESC";
+            parameter.orderBy = "updatedAt";
             //parameter.whereFieldValue = document.getElementById("whereFieldValue").value;
 
             baseRequest.jsonStringParameter = JSON.stringify(parameter);
@@ -17,7 +17,8 @@ function apiPost(method) {
         case "getCommentList":
             var parameter = new Object();
             parameter.recordsLimit = document.getElementById("pageSizeForComment").value;
-            parameter.orderBy = "updatedAt DESC";
+            parameter.orderBy = "updatedAt";
+            parameter.orderByDesc = true;
             parameter.whereFieldValue = document.getElementById("postID").value;
 
             baseRequest.jsonStringParameter = JSON.stringify(parameter);
