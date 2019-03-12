@@ -13,4 +13,12 @@ public class PostMapperExtendSqlProvider {
 
         return sql;
     }
+
+    public String voteAdd(int postId) {
+        return "update bbsPost set vote=vote+1 where postId=#{postId,jdbcType=INTEGER}";
+    }
+
+    public String voteReduce(int postId) {
+        return "update bbsPost set vote=vote-1 where postId=#{postId,jdbcType=INTEGER}";
+    }
 }

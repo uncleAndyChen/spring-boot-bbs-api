@@ -9,4 +9,10 @@ import java.util.List;
 public interface PostMapperExtend {
     @SelectProvider(type=PostMapperExtendSqlProvider.class, method="getPostList")
     List<Post> getPostList(CommonRequest commonRequest);
+
+    @SelectProvider(type=PostMapperExtendSqlProvider.class, method="voteAdd")
+    void voteAdd(int postId);
+
+    @SelectProvider(type=PostMapperExtendSqlProvider.class, method="voteReduce")
+    void voteReduce(int postId);
 }

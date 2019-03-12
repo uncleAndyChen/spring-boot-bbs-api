@@ -3,6 +3,7 @@ package bbs.api.biz.dal.service;
 import bbs.api.biz.dal.mapper.original.UserStarAndPraiseMapMapper;
 import bbs.api.biz.model.entity.UserStarAndPraiseMap;
 import bbs.api.biz.model.entity.UserStarAndPraiseMapExample;
+import bbs.api.biz.model.request.UserStarAndPraiseMapRequest;
 import bbs.api.common.lib.application.BeanTools;
 
 import java.util.List;
@@ -14,13 +15,16 @@ public class UserStarAndPraiseMapDalService {
         userStarAndPraiseMapMapper.insert(userStarAndPraiseMap);
     }
 
-    public static void delete(int userSAPMId) {
-        userStarAndPraiseMapMapper.deleteByPrimaryKey(userSAPMId);
+    public static void delete(UserStarAndPraiseMap userStarAndPraiseMap) {
+        UserStarAndPraiseMapExample example = new UserStarAndPraiseMapExample();
+        example.or().andUserIdEqualTo(userStarAndPraiseMap.getUserId()).andPostIdEqualTo(userStarAndPraiseMap.getPostId());
+
+        userStarAndPraiseMapMapper.deleteByExample(example);
     }
 
-    public static List<UserStarAndPraiseMap> selectByPostIdsAndUserId(List<Integer> postIds, int userId) {
+    public static List<UserStarAndPraiseMap> selectByPostIdsAndUserId(UserStarAndPraiseMapRequest userStarAndPraiseMapRequest) {
         UserStarAndPraiseMapExample example = new UserStarAndPraiseMapExample();
-        example.or().andUserIdEqualTo(userId).andPostIdIn(postIds);
+        example.or().andUserIdEqualTo(userStarAndPraiseMapRequest.getUserId()).andPostIdIn(userStarAndPraiseMapRequest.getPostIds());
 
         return userStarAndPraiseMapMapper.selectByExample(example);
     }

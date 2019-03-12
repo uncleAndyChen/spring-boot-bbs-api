@@ -15,6 +15,13 @@ public class UserDalService {
         return userMapper.selectByPrimaryKey(userId);
     }
 
+    public static List<User> getUserByUserIds(List<Integer> userIds) {
+        UserExample example = new UserExample();
+        example.or().andUserIdIn(userIds);
+
+        return userMapper.selectByExample(example);
+    }
+
     public static User userLogin(UserLoginRequest userLoginRequest) {
         UserExample userExample = new UserExample();
         userExample.or()

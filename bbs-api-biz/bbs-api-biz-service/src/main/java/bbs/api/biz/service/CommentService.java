@@ -9,10 +9,8 @@ import bbs.api.biz.model.response.NewCommentResponse;
 import bbs.api.biz.model.view.GlobalView;
 import bbs.api.common.lib.DateHelper;
 import bbs.api.common.lib.JsonHelper;
-import bbs.api.common.model.ModelHelper;
 import bbs.api.common.model.request.BaseRequest;
 import bbs.api.common.model.response.ApiResponse;
-import bbs.api.common.model.response.ResponseCodeEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +43,9 @@ public class CommentService {
         Comment comment = new Comment();
         NewCommentResponse newCommentResponse = new NewCommentResponse();
 
-        comment.setPostId(CommonFunction.removeGlobalIdPrefixAndConvertToInt(newCommentRequest.getPostId()));
+        comment.setPostId(CommonService.removeGlobalIdPrefixAndConvertToInt(newCommentRequest.getPostId()));
         comment.setContent(newCommentRequest.getContent());
-        comment.setUserId(CommonFunction.removeGlobalIdPrefixAndConvertToInt(newCommentRequest.getUserId()));
+        comment.setUserId(CommonService.removeGlobalIdPrefixAndConvertToInt(newCommentRequest.getUserId()));
         comment.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
         CommentDalService.insert(comment);

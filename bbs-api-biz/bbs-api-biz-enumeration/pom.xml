@@ -5,16 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.uncleAndyChen</groupId>
-    <artifactId>bbs-api-biz</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>bbs-api-biz-enumeration</artifactId>
     <version>0.0.1</version>
 
-    <modules>
-        <module>bbs-api-biz-facade</module>
-        <module>bbs-api-biz-service</module>
-        <module>bbs-api-biz-model</module>
-        <module>bbs-api-biz-dal</module>
-        <module>bbs-api-biz-enumeration</module>
-    </modules>
 
 </project>

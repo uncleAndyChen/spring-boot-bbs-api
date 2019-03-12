@@ -24,6 +24,14 @@ public class PostDalService {
         postMapper.updateByPrimaryKey(post);
    }
 
+    public static void voteAdd(int postId) {
+        postMapperExtend.voteAdd(postId);
+    }
+
+    public static void voteReduce(int postId) {
+        postMapperExtend.voteAdd(postId);
+    }
+
    public static Post getPostByPrimaryKey(int postId) {
         return postMapper.selectByPrimaryKey(postId);
     }

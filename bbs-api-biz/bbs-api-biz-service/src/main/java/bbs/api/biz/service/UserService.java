@@ -12,6 +12,9 @@ import bbs.api.common.model.request.BaseRequest;
 import bbs.api.common.model.response.ApiResponse;
 import bbs.api.common.model.response.ResponseCodeEnum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserService {
     /**
      * 获取用户信息
@@ -19,15 +22,22 @@ public class UserService {
     public static AuthorView getAuthorView(int userId) {
         User user = UserDalService.getUserByPrimaryKey(userId);
 
-        if (user != null) {
-            AuthorView authorView = new AuthorView();
-            authorView.setId(GlobalView.idPrefix + user.getUserId());
-            authorView.setUsername(user.getUsername());
-
-            return authorView;
+        if (user == null) {
+            return null;
         }
 
-        return null;
+        return getAuthorViewByUser(user);
+    }
+
+    public static List<AuthorView> getAuthorViewList(List<Integer> userIds) {
+        List<User> userList = UserDalService.getUserByUserIds(userIds);
+        List<AuthorView> authorViewList = new ArrayList<>();
+
+        for(User user : userList) {
+            authorViewList.add(getAuthorViewByUser(user));
+        }
+
+        return authorViewList;
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -48,5 +58,13 @@ public class UserService {
         userLoginResponse.setUserId(GlobalView.idPrefix + user.getUserId());
 
         return new ApiResponse(userLoginResponse);
+    }
+
+    private static AuthorView getAuthorViewByUser(User user) {
+        AuthorView authorView = new AuthorView();
+        authorView.setId(GlobalView.idPrefix + user.getUserId());
+        authorView.setUsername(user.getUsername());
+
+        return authorView;
     }
 }

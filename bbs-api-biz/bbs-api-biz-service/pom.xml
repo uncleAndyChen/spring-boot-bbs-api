@@ -37,6 +37,11 @@
             <artifactId>bbs-api-common-lib</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.uncleAndyChen</groupId>
+            <artifactId>bbs-api-biz-enumeration</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
 </project>
