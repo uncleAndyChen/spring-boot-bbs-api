@@ -4,8 +4,6 @@ import bbs.api.biz.model.view.GlobalView;
 
 public class CommonRequest {
     private int recordsLimit = 0;
-    private String orderBy = "";
-    private boolean orderByDesc = false;
     private String whereFieldValue = "0";
     /**
      * length 大于0表示已登录用户的id，length 为0表示未登录。
@@ -32,22 +30,6 @@ public class CommonRequest {
 
     public void setRecordsLimit(int recordsLimit) {
         this.recordsLimit = recordsLimit;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
-    }
-
-    public boolean isOrderByDesc() {
-        return orderByDesc;
-    }
-
-    public void setOrderByDesc(boolean orderByDesc) {
-        this.orderByDesc = orderByDesc;
     }
 
     public String getWhereFieldValue() {
