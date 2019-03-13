@@ -4,6 +4,7 @@ import bbs.api.biz.dal.service.PostDalService;
 import bbs.api.biz.dal.service.UserStarAndPraiseMapDalService;
 import bbs.api.biz.enumeration.UserStarAndPraiseMapMapTypeEnum;
 import bbs.api.biz.model.entity.UserStarAndPraiseMap;
+import bbs.api.biz.model.request.UserStarAndPraiseRequest;
 import bbs.api.common.lib.DateHelper;
 import bbs.api.common.lib.JsonHelper;
 import bbs.api.common.model.request.BaseRequest;
@@ -11,8 +12,10 @@ import bbs.api.common.model.response.ApiResponse;
 
 public class UserStarAndPraiseMapService {
     public static ApiResponse userStarAndPraiseInsert(BaseRequest baseRequest) {
-        UserStarAndPraiseMap userStarAndPraiseMap = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), UserStarAndPraiseMap.class);
+        UserStarAndPraiseRequest userStarAndPraiseRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), UserStarAndPraiseRequest.class);
+        UserStarAndPraiseMap userStarAndPraiseMap = new UserStarAndPraiseMap();
 
+        setUserStarAndPraiseMapByRequest(userStarAndPraiseRequest, userStarAndPraiseMap);
         userStarAndPraiseMap.setCreatedAt(DateHelper.getCurrentTimeUnixTimestamp());
 
         if (UserStarAndPraiseMapDalService.isExists(userStarAndPraiseMap)) {
@@ -29,7 +32,10 @@ public class UserStarAndPraiseMapService {
     }
 
     public static ApiResponse userStarAndPraiseDelete(BaseRequest baseRequest) {
-        UserStarAndPraiseMap userStarAndPraiseMap = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), UserStarAndPraiseMap.class);
+        UserStarAndPraiseRequest userStarAndPraiseRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), UserStarAndPraiseRequest.class);
+        UserStarAndPraiseMap userStarAndPraiseMap = new UserStarAndPraiseMap();
+
+        setUserStarAndPraiseMapByRequest(userStarAndPraiseRequest, userStarAndPraiseMap);
         UserStarAndPraiseMapDalService.delete(userStarAndPraiseMap);
 
         if (userStarAndPraiseMap.getMapType() == UserStarAndPraiseMapMapTypeEnum.praise.getIndex()) {
@@ -37,5 +43,11 @@ public class UserStarAndPraiseMapService {
         }
 
         return new ApiResponse();
+    }
+
+    private static void setUserStarAndPraiseMapByRequest(UserStarAndPraiseRequest userStarAndPraiseRequest, UserStarAndPraiseMap userStarAndPraiseMap) {
+        userStarAndPraiseMap.setUserId(CommonService.removeGlobalIdPrefixAndConvertToInt(userStarAndPraiseRequest.getUserId()));
+        userStarAndPraiseMap.setPostId(userStarAndPraiseRequest.getPostId());
+        userStarAndPraiseMap.setMapType(userStarAndPraiseRequest.getMapType());
     }
 }
