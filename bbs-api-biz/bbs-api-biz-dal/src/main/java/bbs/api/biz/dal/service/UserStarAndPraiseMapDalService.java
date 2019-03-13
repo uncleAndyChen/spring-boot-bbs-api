@@ -17,15 +17,31 @@ public class UserStarAndPraiseMapDalService {
 
     public static void delete(UserStarAndPraiseMap userStarAndPraiseMap) {
         UserStarAndPraiseMapExample example = new UserStarAndPraiseMapExample();
-        example.or().andUserIdEqualTo(userStarAndPraiseMap.getUserId()).andPostIdEqualTo(userStarAndPraiseMap.getPostId());
+        example.or()
+                .andUserIdEqualTo(userStarAndPraiseMap.getUserId())
+                .andPostIdEqualTo(userStarAndPraiseMap.getPostId())
+                .andMapTypeEqualTo(userStarAndPraiseMap.getMapType());
 
         userStarAndPraiseMapMapper.deleteByExample(example);
     }
 
     public static List<UserStarAndPraiseMap> selectByPostIdsAndUserId(UserStarAndPraiseMapRequest userStarAndPraiseMapRequest) {
         UserStarAndPraiseMapExample example = new UserStarAndPraiseMapExample();
-        example.or().andUserIdEqualTo(userStarAndPraiseMapRequest.getUserId()).andPostIdIn(userStarAndPraiseMapRequest.getPostIds());
+        example.or()
+                .andUserIdEqualTo(userStarAndPraiseMapRequest.getUserId())
+                .andPostIdIn(userStarAndPraiseMapRequest.getPostIds());
 
         return userStarAndPraiseMapMapper.selectByExample(example);
+    }
+
+    public static boolean isExists(UserStarAndPraiseMap userStarAndPraiseMap) {
+        UserStarAndPraiseMapExample example = new UserStarAndPraiseMapExample();
+        example.or()
+                .andUserIdEqualTo(userStarAndPraiseMap.getUserId())
+                .andPostIdEqualTo(userStarAndPraiseMap.getPostId())
+                .andMapTypeEqualTo(userStarAndPraiseMap.getMapType());
+        List<UserStarAndPraiseMap> userStarAndPraiseMapList = userStarAndPraiseMapMapper.selectByExample(example);
+
+        return userStarAndPraiseMapList.size() > 0;
     }
 }

@@ -22,6 +22,25 @@ function apiPost(method) {
             break;
     }
 
+    callAjax(baseRequest);
+}
+
+function userStarAndPraise(method, mapType) {
+    var baseRequest = new Object();
+    baseRequest.method = method;
+
+    var parameter = new Object();
+
+    parameter.userId = document.getElementById("userId").value;
+    parameter.postId = document.getElementById("postIDForStarOrPraise").value;
+    parameter.mapType = mapType;
+
+    baseRequest.jsonStringParameter = JSON.stringify(parameter);
+
+    callAjax(baseRequest);
+}
+
+function callAjax(baseRequest) {
     $.ajax({
         type: "POST",
         url: apiUrl,
@@ -32,10 +51,10 @@ function apiPost(method) {
             var result = "操作结果：";
 
             if (o.code === 1) {
-                // alert("success!")
+                alert("success!");
                 $("#divResult").html(result + "success!");
             } else {
-                // alert(o.message);
+                alert(o.message);
                 $("#divResult").html(result + o.message);
             }
         },

@@ -14,11 +14,14 @@ public class PostMapperExtendSqlProvider {
         return sql;
     }
 
-    public String voteAdd(int postId) {
+    /**
+     * 如果用 int 会报错：Cannot invoke a method that holds named argument(@Param) using a specifying parameterObject
+     */
+    public String voteAdd(Integer postId) {
         return "update bbsPost set vote=vote+1 where postId=#{postId,jdbcType=INTEGER}";
     }
 
-    public String voteReduce(int postId) {
+    public String voteReduce(Integer postId) {
         return "update bbsPost set vote=vote-1 where postId=#{postId,jdbcType=INTEGER}";
     }
 }

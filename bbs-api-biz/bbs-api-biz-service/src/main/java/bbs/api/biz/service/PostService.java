@@ -40,7 +40,7 @@ public class PostService {
         int userId = 0;
 
         if (commonRequest.getUserId() != null && commonRequest.getUserId().length() > 0) {
-            userId = Integer.parseInt(commonRequest.getUserId());
+            userId = CommonService.removeGlobalIdPrefixAndConvertToInt(commonRequest.getUserId());
         }
 
         for (Post post : postList) {

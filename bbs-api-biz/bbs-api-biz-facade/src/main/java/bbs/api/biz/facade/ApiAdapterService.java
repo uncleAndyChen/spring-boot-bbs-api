@@ -1,9 +1,6 @@
 package bbs.api.biz.facade;
 
-import bbs.api.biz.service.CommentService;
-import bbs.api.biz.service.ErrorLogService;
-import bbs.api.biz.service.PostService;
-import bbs.api.biz.service.UserService;
+import bbs.api.biz.service.*;
 import bbs.api.common.model.ModelHelper;
 import bbs.api.common.model.request.BaseRequest;
 import bbs.api.common.model.response.ApiResponse;
@@ -39,6 +36,10 @@ public class ApiAdapterService {
                 return CommentService.getCommentList(baseRequest);
            case "createComment":
                return CommentService.insert(baseRequest);
+           case "userStarAndPraiseInsert":
+               return UserStarAndPraiseMapService.userStarAndPraiseInsert(baseRequest);
+           case "userStarAndPraiseDelete":
+               return UserStarAndPraiseMapService.userStarAndPraiseDelete(baseRequest);
             default:
                 return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noSuchMethodException);
         }

@@ -29,7 +29,7 @@ public class PostDalService {
     }
 
     public static void voteReduce(int postId) {
-        postMapperExtend.voteAdd(postId);
+        postMapperExtend.voteReduce(postId);
     }
 
    public static Post getPostByPrimaryKey(int postId) {

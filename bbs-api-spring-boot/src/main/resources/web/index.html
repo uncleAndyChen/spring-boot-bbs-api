@@ -25,6 +25,15 @@
     <a href="javascript:apiPost('getCommentList');">获取评论列表</a>
     <br/>
     <hr/>
+    <hr/>
+    用户ID ：<input type="text" id="userId" value="5"/>
+    帖子ID：<input type="text" id="postIDForStarOrPraise" value="1"/>
+    &nbsp;&nbsp;
+    <a href="javascript:userStarAndPraise('userStarAndPraiseInsert', 1);">收藏</a>
+    <a href="javascript:userStarAndPraise('userStarAndPraiseInsert', 2);">点赞</a>
+    <a href="javascript:userStarAndPraise('userStarAndPraiseDelete', 1);">取消收藏</a>
+    <a href="javascript:userStarAndPraise('userStarAndPraiseDelete', 2);">取消点赞</a>
+    <br/>
     <div style="color:red;" id="divResult"></div>
     <hr/>
     <textarea rows="30" cols="256" id="txtJsonResult"></textarea>
