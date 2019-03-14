@@ -47,7 +47,7 @@ public class UserStarAndPraiseMapService {
 
     private static void setUserStarAndPraiseMapByRequest(UserStarAndPraiseRequest userStarAndPraiseRequest, UserStarAndPraiseMap userStarAndPraiseMap) {
         userStarAndPraiseMap.setUserId(CommonService.removeGlobalIdPrefixAndConvertToInt(userStarAndPraiseRequest.getUserId()));
-        userStarAndPraiseMap.setPostId(userStarAndPraiseRequest.getPostId());
+        userStarAndPraiseMap.setPostId(CommonService.removeGlobalIdPrefixAndConvertToInt(userStarAndPraiseRequest.getPostId()));
         userStarAndPraiseMap.setMapType(userStarAndPraiseRequest.getMapType());
     }
 }

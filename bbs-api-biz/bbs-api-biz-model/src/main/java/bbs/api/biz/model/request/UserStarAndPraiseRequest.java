@@ -2,7 +2,7 @@ package bbs.api.biz.model.request;
 
 public class UserStarAndPraiseRequest {
     private String userId;
-    private Integer postId;
+    private String postId;
     private Integer mapType;
 
     public String getUserId() {
@@ -13,11 +13,11 @@ public class UserStarAndPraiseRequest {
         this.userId = userId;
     }
 
-    public Integer getPostId() {
+    public String getPostId() {
         return postId;
     }
 
-    public void setPostId(Integer postId) {
+    public void setPostId(String postId) {
         this.postId = postId;
     }
 
