@@ -30,6 +30,55 @@ public class PostService {
         CommonRequest commonRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), CommonRequest.class);
         List<Post> postList = PostDalService.getPostList(commonRequest);
 
+        return getPostListByCommonRequestAndPostList(commonRequest, postList);
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static ApiResponse getPostByPrimaryKey(BaseRequest baseRequest) {
+        CommonRequest commonRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), CommonRequest.class);
+
+        if (commonRequest.getWhereFieldValue().length() > 0) {
+            commonRequest.setPostId(Integer.parseInt(commonRequest.getWhereFieldValue()));
+        }
+
+        List<Post> postList = PostDalService.getPostList(commonRequest);
+
+        return getPostListByCommonRequestAndPostList(commonRequest, postList);
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static ApiResponse insertPost(BaseRequest baseRequest) {
+        NewORModifyPostRequest newORModifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewORModifyPostRequest.class);
+        Post post = new Post();
+
+        post.setUserId(CommonService.removeGlobalIdPrefixAndConvertToInt(newORModifyPostRequest.getUserId()));
+        post.setTitle(newORModifyPostRequest.getTitle());
+        post.setContent(newORModifyPostRequest.getContent());
+        post.setVote(0);
+        post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
+
+        PostDalService.insert(post);
+        return new ApiResponse(getModifyPostResponse(post));
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static ApiResponse updatePost(BaseRequest baseRequest) {
+        NewORModifyPostRequest newORModifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewORModifyPostRequest.class);
+        Post post = PostDalService.getPostByPrimaryKey(CommonService.removeGlobalIdPrefixAndConvertToInt(newORModifyPostRequest.getPostId()));
+
+        if (post == null) {
+            return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
+        }
+
+        post.setTitle(newORModifyPostRequest.getTitle());
+        post.setContent(newORModifyPostRequest.getContent());
+        post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
+
+        PostDalService.update(post);
+        return new ApiResponse(getModifyPostResponse(post));
+    }
+
+    private static ApiResponse getPostListByCommonRequestAndPostList(CommonRequest commonRequest, List<Post> postList) {
         if (postList.size() == 0) {
             return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
         }
@@ -69,50 +118,6 @@ public class PostService {
         }
 
         return new ApiResponse(postListResponseList);
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static ApiResponse getPostByPrimaryKey(BaseRequest baseRequest) {
-        int postId = Integer.parseInt(baseRequest.getExtendValue().replace(GlobalView.idPrefix, ""));
-        Post post = PostDalService.getPostByPrimaryKey(postId);
-
-        if (post == null) {
-            return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
-        }
-
-        return new ApiResponse(getPostResponseByPost(post));
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static ApiResponse insertPost(BaseRequest baseRequest) {
-        NewORModifyPostRequest newORModifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewORModifyPostRequest.class);
-        Post post = new Post();
-
-        post.setUserId(CommonService.removeGlobalIdPrefixAndConvertToInt(newORModifyPostRequest.getUserId()));
-        post.setTitle(newORModifyPostRequest.getTitle());
-        post.setContent(newORModifyPostRequest.getContent());
-        post.setVote(0);
-        post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
-
-        PostDalService.insert(post);
-        return new ApiResponse(getModifyPostResponse(post));
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static ApiResponse updatePost(BaseRequest baseRequest) {
-        NewORModifyPostRequest newORModifyPostRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), NewORModifyPostRequest.class);
-        Post post = PostDalService.getPostByPrimaryKey(CommonService.removeGlobalIdPrefixAndConvertToInt(newORModifyPostRequest.getPostId()));
-
-        if (post == null) {
-            return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
-        }
-
-        post.setTitle(newORModifyPostRequest.getTitle());
-        post.setContent(newORModifyPostRequest.getContent());
-        post.setUpdatedAt(DateHelper.getCurrentTimeUnixTimestamp());
-
-        PostDalService.update(post);
-        return new ApiResponse(getModifyPostResponse(post));
     }
 
     private static NewORModifyPostResponse getModifyPostResponse(Post post) {

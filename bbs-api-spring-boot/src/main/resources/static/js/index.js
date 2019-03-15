@@ -11,7 +11,11 @@ function apiPost(method) {
             baseRequest.jsonStringParameter = JSON.stringify(parameter);
             break;
         case "getPostByPrimaryKey":
-            baseRequest.extendValue = document.getElementById("whereFieldValue").value;
+            var parameter = new Object();
+            parameter.userId = document.getElementById("userIdForPostItem").value;
+            parameter.whereFieldValue = document.getElementById("whereFieldValue").value;
+
+            baseRequest.jsonStringParameter = JSON.stringify(parameter);
             break;
         case "getCommentList":
             var parameter = new Object();

@@ -9,6 +9,7 @@ public class CommonRequest {
      * length 大于0表示已登录用户的id，length 为0表示未登录。
      */
     private String userId = "";
+    private Integer postId = 0;
 
     /**
      * 该方法不能删除重新生成，需要在这里去掉前缀
@@ -38,5 +39,13 @@ public class CommonRequest {
 
     public String getUserId() {
         return userId;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 }
