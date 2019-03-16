@@ -54,7 +54,9 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
     - [x] 创建帖子
     - [x] 修改帖子
     - [x] 点赞功能（点赞之前需要先登录，每个用户对同一个帖子，点赞之后可取消点赞，类似微信朋友圈儿的点赞功能）
-    - [x] 收藏功能（在操作上类似点赞），菜单增加【我的收藏】
+    - [x] 收藏功能（在操作上类似点赞）
+        - 菜单【我的收藏】，决定不做了。之后如果有时间，会把精力投入到 [ant-design-pro](https://github.com/ant-design/ant-design-pro)。
+    - [x] 增加菜单【我的帖子】，只是简单的过滤，没有重新从服务器获取。目前页面显示的是所有帖子。
 1. [x] 使用 Druid
     - [官方介绍](https://github.com/alibaba/druid/wiki/常见问题)：Druid是Java语言中最好的数据库连接池。Druid能够提供强大的监控和扩展功能。
     - 本项目使用 Druid，仅供学习。
