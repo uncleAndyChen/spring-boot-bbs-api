@@ -10,7 +10,7 @@ public interface UserStarAndPraiseMapMapper {
 
     int deleteByExample(UserStarAndPraiseMapExample example);
 
-    int deleteByPrimaryKey(Integer userSAPMId);
+    int deleteByPrimaryKey(Integer userSapmId);
 
     int insert(UserStarAndPraiseMap record);
 
@@ -18,7 +18,7 @@ public interface UserStarAndPraiseMapMapper {
 
     List<UserStarAndPraiseMap> selectByExample(UserStarAndPraiseMapExample example);
 
-    UserStarAndPraiseMap selectByPrimaryKey(Integer userSAPMId);
+    UserStarAndPraiseMap selectByPrimaryKey(Integer userSapmId);
 
     int updateByExampleSelective(@Param("record") UserStarAndPraiseMap record, @Param("example") UserStarAndPraiseMapExample example);
 

@@ -1,7 +1,7 @@
 package bbs.api.biz.model.entity;
 
 public class UserStarAndPraiseMap {
-    private Integer userSAPMId;
+    private Integer userSapmId;
 
     private Integer userId;
 
@@ -11,12 +11,12 @@ public class UserStarAndPraiseMap {
 
     private Integer createdAt;
 
-    public Integer getUserSAPMId() {
-        return userSAPMId;
+    public Integer getUserSapmId() {
+        return userSapmId;
     }
 
-    public void setUserSAPMId(Integer userSAPMId) {
-        this.userSAPMId = userSAPMId;
+    public void setUserSapmId(Integer userSapmId) {
+        this.userSapmId = userSapmId;
     }
 
     public Integer getUserId() {

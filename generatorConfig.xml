@@ -43,10 +43,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="bbsComment" domainObjectName="Comment"><property name="useActualColumnNames" value="true"/><generatedKey identity="true" type="post" column="commentId" sqlStatement="Mysql"/></table>
-        <table tableName="bbsPost" domainObjectName="Post"><property name="useActualColumnNames" value="true"/><generatedKey identity="true" type="post" column="postId" sqlStatement="Mysql"/></table>
-        <table tableName="bbsUser" domainObjectName="User"><property name="useActualColumnNames" value="true"/><generatedKey identity="true" type="post" column="userId" sqlStatement="Mysql"/></table>
-        <table tableName="bbsUserStarAndPraiseMap" domainObjectName="UserStarAndPraiseMap"><property name="useActualColumnNames" value="true"/><generatedKey identity="true" type="post" column="userSAPMId" sqlStatement="Mysql"/></table>
+        <table tableName="bbs_comment" domainObjectName="Comment"><generatedKey identity="true" type="post" column="comment_id" sqlStatement="Mysql"/></table>
+        <table tableName="bbs_post" domainObjectName="Post"><generatedKey identity="true" type="post" column="post_id" sqlStatement="Mysql"/></table>
+        <table tableName="bbs_user" domainObjectName="User"><generatedKey identity="true" type="post" column="user_id" sqlStatement="Mysql"/></table>
+        <table tableName="bbs_user_star_and_praise_map" domainObjectName="UserStarAndPraiseMap"><generatedKey identity="true" type="post" column="user_SAPM_id" sqlStatement="Mysql"/></table>
     </context>
 </generatorConfiguration>
 <!--

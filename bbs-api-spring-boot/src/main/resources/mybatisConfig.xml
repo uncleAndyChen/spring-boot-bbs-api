@@ -19,6 +19,11 @@
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
         <setting name="logImpl" value="LOG4J2"/>
+        <!-- 开启驼峰映射，为自定义的SQL语句服务-->
+        <!-- 设置启用数据库字段下划线映射到 java POJO 的驼峰式命名属性，默认值为 false-->
+        <!-- 即从经典数据库列名 a_column 到经典 Java 属性名 aColumn 的类似映射 -->
+        <!-- 配置后无需写 resultMap 将数据库字段和实体类属性对应 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <!--<plugins>-->
         <!-- com.github.pagehelper为PageHelper类所在包名 -->

@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbs.api.biz.dal.mapper.original.CommentMapper">
   <resultMap id="BaseResultMap" type="bbs.api.biz.model.entity.Comment">
-    <id column="commentId" jdbcType="INTEGER" property="commentId" />
-    <result column="postId" jdbcType="INTEGER" property="postId" />
-    <result column="userId" jdbcType="INTEGER" property="userId" />
-    <result column="updatedAt" jdbcType="INTEGER" property="updatedAt" />
+    <id column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="post_id" jdbcType="INTEGER" property="postId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="updated_at" jdbcType="INTEGER" property="updatedAt" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="bbs.api.biz.model.entity.Comment">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    commentId, postId, userId, updatedAt
+    comment_id, post_id, user_id, updated_at
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -82,7 +82,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from `bbsComment`
+    from `bbs_comment`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -96,7 +96,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from `bbsComment`
+    from `bbs_comment`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -109,15 +109,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from `bbsComment`
-    where commentId = #{commentId,jdbcType=INTEGER}
+    from `bbs_comment`
+    where comment_id = #{commentId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from `bbsComment`
-    where commentId = #{commentId,jdbcType=INTEGER}
+    delete from `bbs_comment`
+    where comment_id = #{commentId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="bbs.api.biz.model.entity.CommentExample">
-    delete from `bbsComment`
+    delete from `bbs_comment`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -126,7 +126,7 @@
     <selectKey keyProperty="commentId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsComment` (postId, userId, updatedAt, 
+    insert into `bbs_comment` (post_id, user_id, updated_at, 
       content)
     values (#{postId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{updatedAt,jdbcType=INTEGER}, 
       #{content,jdbcType=LONGVARCHAR})
@@ -135,16 +135,16 @@
     <selectKey keyProperty="commentId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsComment`
+    insert into `bbs_comment`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="postId != null">
-        postId,
+        post_id,
       </if>
       <if test="userId != null">
-        userId,
+        user_id,
       </if>
       <if test="updatedAt != null">
-        updatedAt,
+        updated_at,
       </if>
       <if test="content != null">
         content,
@@ -166,25 +166,25 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="bbs.api.biz.model.entity.CommentExample" resultType="java.lang.Long">
-    select count(*) from `bbsComment`
+    select count(*) from `bbs_comment`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update `bbsComment`
+    update `bbs_comment`
     <set>
       <if test="record.commentId != null">
-        commentId = #{record.commentId,jdbcType=INTEGER},
+        comment_id = #{record.commentId,jdbcType=INTEGER},
       </if>
       <if test="record.postId != null">
-        postId = #{record.postId,jdbcType=INTEGER},
+        post_id = #{record.postId,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
-        userId = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.updatedAt != null">
-        updatedAt = #{record.updatedAt,jdbcType=INTEGER},
+        updated_at = #{record.updatedAt,jdbcType=INTEGER},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -195,57 +195,57 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update `bbsComment`
-    set commentId = #{record.commentId,jdbcType=INTEGER},
-      postId = #{record.postId,jdbcType=INTEGER},
-      userId = #{record.userId,jdbcType=INTEGER},
-      updatedAt = #{record.updatedAt,jdbcType=INTEGER},
+    update `bbs_comment`
+    set comment_id = #{record.commentId,jdbcType=INTEGER},
+      post_id = #{record.postId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      updated_at = #{record.updatedAt,jdbcType=INTEGER},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update `bbsComment`
-    set commentId = #{record.commentId,jdbcType=INTEGER},
-      postId = #{record.postId,jdbcType=INTEGER},
-      userId = #{record.userId,jdbcType=INTEGER},
-      updatedAt = #{record.updatedAt,jdbcType=INTEGER}
+    update `bbs_comment`
+    set comment_id = #{record.commentId,jdbcType=INTEGER},
+      post_id = #{record.postId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      updated_at = #{record.updatedAt,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="bbs.api.biz.model.entity.Comment">
-    update `bbsComment`
+    update `bbs_comment`
     <set>
       <if test="postId != null">
-        postId = #{postId,jdbcType=INTEGER},
+        post_id = #{postId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        userId = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="updatedAt != null">
-        updatedAt = #{updatedAt,jdbcType=INTEGER},
+        updated_at = #{updatedAt,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where commentId = #{commentId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="bbs.api.biz.model.entity.Comment">
-    update `bbsComment`
-    set postId = #{postId,jdbcType=INTEGER},
-      userId = #{userId,jdbcType=INTEGER},
-      updatedAt = #{updatedAt,jdbcType=INTEGER},
+    update `bbs_comment`
+    set post_id = #{postId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      updated_at = #{updatedAt,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR}
-    where commentId = #{commentId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="bbs.api.biz.model.entity.Comment">
-    update `bbsComment`
-    set postId = #{postId,jdbcType=INTEGER},
-      userId = #{userId,jdbcType=INTEGER},
-      updatedAt = #{updatedAt,jdbcType=INTEGER}
-    where commentId = #{commentId,jdbcType=INTEGER}
+    update `bbs_comment`
+    set post_id = #{postId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      updated_at = #{updatedAt,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
 </mapper>

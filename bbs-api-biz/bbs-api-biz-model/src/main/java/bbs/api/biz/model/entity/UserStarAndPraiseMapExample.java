@@ -104,303 +104,303 @@ public class UserStarAndPraiseMapExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andUserSAPMIdIsNull() {
-            addCriterion("userSAPMId is null");
+        public Criteria andUserSapmIdIsNull() {
+            addCriterion("user_SAPM_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdIsNotNull() {
-            addCriterion("userSAPMId is not null");
+        public Criteria andUserSapmIdIsNotNull() {
+            addCriterion("user_SAPM_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdEqualTo(Integer value) {
-            addCriterion("userSAPMId =", value, "userSAPMId");
+        public Criteria andUserSapmIdEqualTo(Integer value) {
+            addCriterion("user_SAPM_id =", value, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdNotEqualTo(Integer value) {
-            addCriterion("userSAPMId <>", value, "userSAPMId");
+        public Criteria andUserSapmIdNotEqualTo(Integer value) {
+            addCriterion("user_SAPM_id <>", value, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdGreaterThan(Integer value) {
-            addCriterion("userSAPMId >", value, "userSAPMId");
+        public Criteria andUserSapmIdGreaterThan(Integer value) {
+            addCriterion("user_SAPM_id >", value, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("userSAPMId >=", value, "userSAPMId");
+        public Criteria andUserSapmIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_SAPM_id >=", value, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdLessThan(Integer value) {
-            addCriterion("userSAPMId <", value, "userSAPMId");
+        public Criteria andUserSapmIdLessThan(Integer value) {
+            addCriterion("user_SAPM_id <", value, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdLessThanOrEqualTo(Integer value) {
-            addCriterion("userSAPMId <=", value, "userSAPMId");
+        public Criteria andUserSapmIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_SAPM_id <=", value, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdIn(List<Integer> values) {
-            addCriterion("userSAPMId in", values, "userSAPMId");
+        public Criteria andUserSapmIdIn(List<Integer> values) {
+            addCriterion("user_SAPM_id in", values, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdNotIn(List<Integer> values) {
-            addCriterion("userSAPMId not in", values, "userSAPMId");
+        public Criteria andUserSapmIdNotIn(List<Integer> values) {
+            addCriterion("user_SAPM_id not in", values, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdBetween(Integer value1, Integer value2) {
-            addCriterion("userSAPMId between", value1, value2, "userSAPMId");
+        public Criteria andUserSapmIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_SAPM_id between", value1, value2, "userSapmId");
             return (Criteria) this;
         }
 
-        public Criteria andUserSAPMIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("userSAPMId not between", value1, value2, "userSAPMId");
+        public Criteria andUserSapmIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_SAPM_id not between", value1, value2, "userSapmId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdIsNull() {
-            addCriterion("userId is null");
+            addCriterion("user_id is null");
             return (Criteria) this;
         }
 
         public Criteria andUserIdIsNotNull() {
-            addCriterion("userId is not null");
+            addCriterion("user_id is not null");
             return (Criteria) this;
         }
 
         public Criteria andUserIdEqualTo(Integer value) {
-            addCriterion("userId =", value, "userId");
+            addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotEqualTo(Integer value) {
-            addCriterion("userId <>", value, "userId");
+            addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdGreaterThan(Integer value) {
-            addCriterion("userId >", value, "userId");
+            addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("userId >=", value, "userId");
+            addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdLessThan(Integer value) {
-            addCriterion("userId <", value, "userId");
+            addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdLessThanOrEqualTo(Integer value) {
-            addCriterion("userId <=", value, "userId");
+            addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdIn(List<Integer> values) {
-            addCriterion("userId in", values, "userId");
+            addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotIn(List<Integer> values) {
-            addCriterion("userId not in", values, "userId");
+            addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdBetween(Integer value1, Integer value2) {
-            addCriterion("userId between", value1, value2, "userId");
+            addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("userId not between", value1, value2, "userId");
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdIsNull() {
-            addCriterion("postId is null");
+            addCriterion("post_id is null");
             return (Criteria) this;
         }
 
         public Criteria andPostIdIsNotNull() {
-            addCriterion("postId is not null");
+            addCriterion("post_id is not null");
             return (Criteria) this;
         }
 
         public Criteria andPostIdEqualTo(Integer value) {
-            addCriterion("postId =", value, "postId");
+            addCriterion("post_id =", value, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdNotEqualTo(Integer value) {
-            addCriterion("postId <>", value, "postId");
+            addCriterion("post_id <>", value, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdGreaterThan(Integer value) {
-            addCriterion("postId >", value, "postId");
+            addCriterion("post_id >", value, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("postId >=", value, "postId");
+            addCriterion("post_id >=", value, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdLessThan(Integer value) {
-            addCriterion("postId <", value, "postId");
+            addCriterion("post_id <", value, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdLessThanOrEqualTo(Integer value) {
-            addCriterion("postId <=", value, "postId");
+            addCriterion("post_id <=", value, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdIn(List<Integer> values) {
-            addCriterion("postId in", values, "postId");
+            addCriterion("post_id in", values, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdNotIn(List<Integer> values) {
-            addCriterion("postId not in", values, "postId");
+            addCriterion("post_id not in", values, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdBetween(Integer value1, Integer value2) {
-            addCriterion("postId between", value1, value2, "postId");
+            addCriterion("post_id between", value1, value2, "postId");
             return (Criteria) this;
         }
 
         public Criteria andPostIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("postId not between", value1, value2, "postId");
+            addCriterion("post_id not between", value1, value2, "postId");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeIsNull() {
-            addCriterion("mapType is null");
+            addCriterion("map_type is null");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeIsNotNull() {
-            addCriterion("mapType is not null");
+            addCriterion("map_type is not null");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeEqualTo(Integer value) {
-            addCriterion("mapType =", value, "mapType");
+            addCriterion("map_type =", value, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeNotEqualTo(Integer value) {
-            addCriterion("mapType <>", value, "mapType");
+            addCriterion("map_type <>", value, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeGreaterThan(Integer value) {
-            addCriterion("mapType >", value, "mapType");
+            addCriterion("map_type >", value, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("mapType >=", value, "mapType");
+            addCriterion("map_type >=", value, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeLessThan(Integer value) {
-            addCriterion("mapType <", value, "mapType");
+            addCriterion("map_type <", value, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("mapType <=", value, "mapType");
+            addCriterion("map_type <=", value, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeIn(List<Integer> values) {
-            addCriterion("mapType in", values, "mapType");
+            addCriterion("map_type in", values, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeNotIn(List<Integer> values) {
-            addCriterion("mapType not in", values, "mapType");
+            addCriterion("map_type not in", values, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeBetween(Integer value1, Integer value2) {
-            addCriterion("mapType between", value1, value2, "mapType");
+            addCriterion("map_type between", value1, value2, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andMapTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("mapType not between", value1, value2, "mapType");
+            addCriterion("map_type not between", value1, value2, "mapType");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtIsNull() {
-            addCriterion("createdAt is null");
+            addCriterion("created_at is null");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtIsNotNull() {
-            addCriterion("createdAt is not null");
+            addCriterion("created_at is not null");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtEqualTo(Integer value) {
-            addCriterion("createdAt =", value, "createdAt");
+            addCriterion("created_at =", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtNotEqualTo(Integer value) {
-            addCriterion("createdAt <>", value, "createdAt");
+            addCriterion("created_at <>", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtGreaterThan(Integer value) {
-            addCriterion("createdAt >", value, "createdAt");
+            addCriterion("created_at >", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtGreaterThanOrEqualTo(Integer value) {
-            addCriterion("createdAt >=", value, "createdAt");
+            addCriterion("created_at >=", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtLessThan(Integer value) {
-            addCriterion("createdAt <", value, "createdAt");
+            addCriterion("created_at <", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtLessThanOrEqualTo(Integer value) {
-            addCriterion("createdAt <=", value, "createdAt");
+            addCriterion("created_at <=", value, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtIn(List<Integer> values) {
-            addCriterion("createdAt in", values, "createdAt");
+            addCriterion("created_at in", values, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtNotIn(List<Integer> values) {
-            addCriterion("createdAt not in", values, "createdAt");
+            addCriterion("created_at not in", values, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtBetween(Integer value1, Integer value2) {
-            addCriterion("createdAt between", value1, value2, "createdAt");
+            addCriterion("created_at between", value1, value2, "createdAt");
             return (Criteria) this;
         }
 
         public Criteria andCreatedAtNotBetween(Integer value1, Integer value2) {
-            addCriterion("createdAt not between", value1, value2, "createdAt");
+            addCriterion("created_at not between", value1, value2, "createdAt");
             return (Criteria) this;
         }
     }

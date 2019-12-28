@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbs.api.biz.dal.mapper.original.UserMapper">
   <resultMap id="BaseResultMap" type="bbs.api.biz.model.entity.User">
-    <id column="userId" jdbcType="INTEGER" property="userId" />
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    userId, username, password
+    user_id, username, password
   </sql>
   <select id="selectByExample" parameterType="bbs.api.biz.model.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -73,7 +73,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from `bbsUser`
+    from `bbs_user`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,15 +84,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from `bbsUser`
-    where userId = #{userId,jdbcType=INTEGER}
+    from `bbs_user`
+    where user_id = #{userId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from `bbsUser`
-    where userId = #{userId,jdbcType=INTEGER}
+    delete from `bbs_user`
+    where user_id = #{userId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="bbs.api.biz.model.entity.UserExample">
-    delete from `bbsUser`
+    delete from `bbs_user`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -101,14 +101,14 @@
     <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsUser` (username, password)
+    insert into `bbs_user` (username, password)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="bbs.api.biz.model.entity.User">
     <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsUser`
+    insert into `bbs_user`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
         username,
@@ -127,16 +127,16 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="bbs.api.biz.model.entity.UserExample" resultType="java.lang.Long">
-    select count(*) from `bbsUser`
+    select count(*) from `bbs_user`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update `bbsUser`
+    update `bbs_user`
     <set>
       <if test="record.userId != null">
-        userId = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
@@ -150,8 +150,8 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update `bbsUser`
-    set userId = #{record.userId,jdbcType=INTEGER},
+    update `bbs_user`
+    set user_id = #{record.userId,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -159,7 +159,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="bbs.api.biz.model.entity.User">
-    update `bbsUser`
+    update `bbs_user`
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -168,12 +168,12 @@
         password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
-    where userId = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="bbs.api.biz.model.entity.User">
-    update `bbsUser`
+    update `bbs_user`
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
-    where userId = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

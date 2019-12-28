@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbs.api.biz.dal.mapper.original.PostMapper">
   <resultMap id="BaseResultMap" type="bbs.api.biz.model.entity.Post">
-    <id column="postId" jdbcType="INTEGER" property="postId" />
-    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <id column="post_id" jdbcType="INTEGER" property="postId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="vote" jdbcType="INTEGER" property="vote" />
-    <result column="updatedAt" jdbcType="INTEGER" property="updatedAt" />
+    <result column="updated_at" jdbcType="INTEGER" property="updatedAt" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="bbs.api.biz.model.entity.Post">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    postId, userId, title, vote, updatedAt
+    post_id, user_id, title, vote, updated_at
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -83,7 +83,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from `bbsPost`
+    from `bbs_post`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -97,7 +97,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from `bbsPost`
+    from `bbs_post`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -110,15 +110,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from `bbsPost`
-    where postId = #{postId,jdbcType=INTEGER}
+    from `bbs_post`
+    where post_id = #{postId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from `bbsPost`
-    where postId = #{postId,jdbcType=INTEGER}
+    delete from `bbs_post`
+    where post_id = #{postId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="bbs.api.biz.model.entity.PostExample">
-    delete from `bbsPost`
+    delete from `bbs_post`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -127,8 +127,8 @@
     <selectKey keyProperty="postId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsPost` (userId, title, vote, 
-      updatedAt, content)
+    insert into `bbs_post` (user_id, title, vote, 
+      updated_at, content)
     values (#{userId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{vote,jdbcType=INTEGER}, 
       #{updatedAt,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
@@ -136,10 +136,10 @@
     <selectKey keyProperty="postId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into `bbsPost`
+    insert into `bbs_post`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        userId,
+        user_id,
       </if>
       <if test="title != null">
         title,
@@ -148,7 +148,7 @@
         vote,
       </if>
       <if test="updatedAt != null">
-        updatedAt,
+        updated_at,
       </if>
       <if test="content != null">
         content,
@@ -173,19 +173,19 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="bbs.api.biz.model.entity.PostExample" resultType="java.lang.Long">
-    select count(*) from `bbsPost`
+    select count(*) from `bbs_post`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update `bbsPost`
+    update `bbs_post`
     <set>
       <if test="record.postId != null">
-        postId = #{record.postId,jdbcType=INTEGER},
+        post_id = #{record.postId,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
-        userId = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
@@ -194,7 +194,7 @@
         vote = #{record.vote,jdbcType=INTEGER},
       </if>
       <if test="record.updatedAt != null">
-        updatedAt = #{record.updatedAt,jdbcType=INTEGER},
+        updated_at = #{record.updatedAt,jdbcType=INTEGER},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -205,33 +205,33 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update `bbsPost`
-    set postId = #{record.postId,jdbcType=INTEGER},
-      userId = #{record.userId,jdbcType=INTEGER},
+    update `bbs_post`
+    set post_id = #{record.postId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       vote = #{record.vote,jdbcType=INTEGER},
-      updatedAt = #{record.updatedAt,jdbcType=INTEGER},
+      updated_at = #{record.updatedAt,jdbcType=INTEGER},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update `bbsPost`
-    set postId = #{record.postId,jdbcType=INTEGER},
-      userId = #{record.userId,jdbcType=INTEGER},
+    update `bbs_post`
+    set post_id = #{record.postId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       vote = #{record.vote,jdbcType=INTEGER},
-      updatedAt = #{record.updatedAt,jdbcType=INTEGER}
+      updated_at = #{record.updatedAt,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="bbs.api.biz.model.entity.Post">
-    update `bbsPost`
+    update `bbs_post`
     <set>
       <if test="userId != null">
-        userId = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
@@ -240,29 +240,29 @@
         vote = #{vote,jdbcType=INTEGER},
       </if>
       <if test="updatedAt != null">
-        updatedAt = #{updatedAt,jdbcType=INTEGER},
+        updated_at = #{updatedAt,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where postId = #{postId,jdbcType=INTEGER}
+    where post_id = #{postId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="bbs.api.biz.model.entity.Post">
-    update `bbsPost`
-    set userId = #{userId,jdbcType=INTEGER},
+    update `bbs_post`
+    set user_id = #{userId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       vote = #{vote,jdbcType=INTEGER},
-      updatedAt = #{updatedAt,jdbcType=INTEGER},
+      updated_at = #{updatedAt,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR}
-    where postId = #{postId,jdbcType=INTEGER}
+    where post_id = #{postId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="bbs.api.biz.model.entity.Post">
-    update `bbsPost`
-    set userId = #{userId,jdbcType=INTEGER},
+    update `bbs_post`
+    set user_id = #{userId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       vote = #{vote,jdbcType=INTEGER},
-      updatedAt = #{updatedAt,jdbcType=INTEGER}
-    where postId = #{postId,jdbcType=INTEGER}
+      updated_at = #{updatedAt,jdbcType=INTEGER}
+    where post_id = #{postId,jdbcType=INTEGER}
   </update>
 </mapper>
