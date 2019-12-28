@@ -1,3 +1,9 @@
+# 请注意
+该项目的数据库表名、字段名，遵循的是驼峰命名法，而非 MySQL 流程的下划线命名法。
+推荐在真实项目中采用流利的下划线命名法，关于数据库表名和字段名的命名规则，不要被这个项目“误导”了。
+
+有关 MySQL 命名规范，请参考：[MyBatis 项目中，有关 MySQL 命名规范，用驼峰命名法与下划线命名法的取舍](https://www.lovesofttech.com/mybatis/mysqlNaming.html)，请关注这篇文章提到的 mapUnderscoreToCamelCase 配置项。
+
 # 项目地址
 * 托管在 github 上的项目链接：https://github.com/uncleAndyChen/spring-boot-bbs-api
 * 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/spring-boot-bbs-api

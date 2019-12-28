@@ -30,7 +30,7 @@ public class PostService {
         CommonRequest commonRequest = JsonHelper.jsonStringToPojo(baseRequest.getJsonStringParameter(), CommonRequest.class);
         List<Post> postList = PostDalService.getPostList(commonRequest);
 
-        return getPostListByCommonRequestAndPostList(commonRequest, postList);
+        return getPostResponseListByCommonRequestAndPostList(commonRequest, postList);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -43,7 +43,7 @@ public class PostService {
 
         List<Post> postList = PostDalService.getPostList(commonRequest);
 
-        return getPostListByCommonRequestAndPostList(commonRequest, postList);
+        return getPostResponseListByCommonRequestAndPostList(commonRequest, postList);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -78,12 +78,12 @@ public class PostService {
         return new ApiResponse(getModifyPostResponse(post));
     }
 
-    private static ApiResponse getPostListByCommonRequestAndPostList(CommonRequest commonRequest, List<Post> postList) {
+    private static ApiResponse getPostResponseListByCommonRequestAndPostList(CommonRequest commonRequest, List<Post> postList) {
         if (postList.size() == 0) {
             return ModelHelper.getApiResponseByResponseCodeEnum(ResponseCodeEnum.noRecord);
         }
 
-        List<PostResponse> postListResponseList = new ArrayList<>();
+        List<PostResponse> postResponseList = new ArrayList<>();
         List<Integer> postIds = new ArrayList<>();
         List<Integer> userIds = new ArrayList<>();
         int userId = 0;
@@ -114,10 +114,10 @@ public class PostService {
         }
 
         for (Post post : postList) {
-            postListResponseList.add(getPostResponseByPost(post, authorViewList, userStarAndPraiseMapList));
+            postResponseList.add(getPostResponseByPost(post, authorViewList, userStarAndPraiseMapList));
         }
 
-        return new ApiResponse(postListResponseList);
+        return new ApiResponse(postResponseList);
     }
 
     private static NewORModifyPostResponse getModifyPostResponse(Post post) {
