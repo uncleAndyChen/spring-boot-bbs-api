@@ -45,6 +45,7 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
 
 # MySQL 表结构
 建表脚本 createTable.sql，位于根目录下。
+
 ![](./bbs-database.png)
 
 # 运行步骤
