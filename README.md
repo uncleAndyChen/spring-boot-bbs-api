@@ -43,6 +43,10 @@
 
 druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项目启动之后，访问：`http://localhost:89/druid`，会自动跳转至：`http://localhost:89/druid/login.html`，要求输入配置的用户名和密码。
 
+# MySQL 表结构
+建表脚本 createTable.sql，位于根目录下。
+![](./bbs-database.png)
+
 # 运行步骤
 ## 运行后端
 1. 创建数据库：导入项目根目录下的文件 createTable.sql。仅在 MySQL v5.7.x 和 v8.0.11 上测试过，未在别的版本和别的数据库测试。
