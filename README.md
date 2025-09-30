@@ -18,19 +18,19 @@
 该项目的数据库表名、字段名，**曾经**遵循的是驼峰命名法，而非 MySQL 流程的下划线命名法。
 推荐在真实项目中采用流行的下划线命名法，关于数据库表名和字段名的命名规则，不要被这个项目“误导”了。
 
-有关 MySQL 命名规范，请参考：[MyBatis 项目中，有关 MySQL 命名规范，用驼峰命名法与下划线命名法的取舍](https://www.lovesofttech.com/mybatis/mysqlNaming.html)，请关注这篇文章提到的 mapUnderscoreToCamelCase 配置项。
+有关 MySQL 命名规范，请参考：[MyBatis 项目中，有关 MySQL 命名规范，用驼峰命名法（不推荐）与下划线命名法（推荐）的取舍](http://blog.5k8.top/mybatis/mysqlNaming.html)，请关注这篇文章提到的 mapUnderscoreToCamelCase 配置项。
 
 # 项目地址
-* 托管在 github 上的项目链接：https://github.com/uncleAndyChen/spring-boot-bbs-api
 * 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/spring-boot-bbs-api
+* 托管在 github 上的项目链接：https://github.com/uncleAndyChen/spring-boot-bbs-api
 
 # 说明
 该项目是以下前端项目的后端 api，前端项目是拿《React进阶之路》第九章示例 [bbs-redux-reselect](https://github.com/xuchaobei/react-book/tree/master/chapter-09/bbs-redux-reselect) 来改的。
 仅改了调用api部分和添加了一些备注，之前的api用的是[apicloud](https://d.apicloud.com/mcm/api)。
 
 - 前端项目地址
-    - 托管在 github 上的项目链接：https://github.com/uncleAndyChen/react-full-stack-learning
     - 托管在 gitee 上的项目链接 ：https://gitee.com/uncleAndyChen/react-full-stack-learning
+    - 托管在 github 上的项目链接：https://github.com/uncleAndyChen/react-full-stack-learning
 
 # 技术栈
 - [Spring Boot v2.1.1](https://github.com/spring-projects/spring-boot)
@@ -58,7 +58,7 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
 在 cmd 窗口下，进入前端项目根目录，执行 `npm start`。
 
 ## 用 WebStorm 调试前端 React 
-请参考：[像用 IDEA 调试 Java 代码一样，用 WebStorm 调试 react 代码](https://www.lovesofttech.com/react/JetBrainsIDESupport)
+请参考：[像用 IDEA 调试 Java 代码一样，用 WebStorm 调试 react 代码](http://blog.5k8.top/react/JetBrainsIDESupport)
 
 ## 登录
 登录之后，才可以发帖和评论。
@@ -110,4 +110,4 @@ druid 的监控功能，配置参照 `bbs-api-spring-boot/application.yml`。项
 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bdff785e1413e413a8f88187c9807306893951282103fad3b3080f05e829bd7b"><img border="0" src="https://github.com/uncleAndyChen/react-full-stack-learning/raw/master/doc/images/qqGroup.png" alt="react stack(react全家桶)" title="react stack(react全家桶)"></a>
 （QQ 群号：683414457，进群密码：`react stack`）
 
-![](https://www.lovesofttech.com/img/react/reactStackLearning.png)
+![](http://blog.5k8.top/img/react/reactStackLearning.png)
